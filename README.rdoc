@@ -7,6 +7,7 @@ Getting started with development:
   - use the command git flow init
   - press enter all the time
   - git pull
+  - rails generate rspec:install
 
 
 How to start:
