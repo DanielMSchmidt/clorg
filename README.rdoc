@@ -1,3 +1,6 @@
+Versions:
+  - v0.01: (12.04.12) Static pages, thats it
+
 Getting started with development:
   - clone the repsitory
   - install git flow
