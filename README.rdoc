@@ -16,5 +16,13 @@ How to start:
   - develop your feature
   - Use git flow feature finish YOUR_FEATURE
 
+Features Developed
+  - simple static Pages with named routes (refering to them by using about_path etc)
+
 Feature in Development:
-  - Static_Pages (Daniel)
+  - Design & Frontend (David)
+  - Login System (Daniel)
+  - Testing (Linus)
+  - Messageboard core features (Malte)
+
+Please add your feature name afterwards
