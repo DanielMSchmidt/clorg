@@ -23,6 +23,20 @@ How to start:
   - develop your feature
   - Use git flow feature finish YOUR_FEATURE
 
+Getting started with Ubuntu:
+
+How to install ruby on rails on ubuntu
+  ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
+  ~$ sudo gem install rails
+
+for Git:
+  ~$ sudo apt-get install -y git-core git-gui git-doc
+How to configure git:
+  http://help.github.com/linux-set-up-git/
+
+Git-flow could be downloaded on Launchpad:
+  https://launchpad.net/ubuntu/+archive/primary/+files/git-flow_0.4.1-2_all.deb
+
 Features Developed
   - simple static Pages with named routes (refering to them by using about_path etc)
 
