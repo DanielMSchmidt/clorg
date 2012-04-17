@@ -2,6 +2,7 @@ Versions:
   - v0.01: (12.04.12) Static pages, thats it
 
 Getting started with development:
+  - install Ruby On Rails
   - clone the repsitory
   - install git flow
   - use the command git flow init
@@ -26,3 +27,4 @@ Feature in Development:
   - Messageboard core features (Malte)
 
 Please add your feature name afterwards
+
