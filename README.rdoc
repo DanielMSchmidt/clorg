@@ -10,6 +10,12 @@ Getting started with development:
   - git pull
   - rails generate rspec:install
 
+Getting started with Ubuntu:
+  How to install ruby on rails on ubuntu
+
+   ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
+   ~$ sudo gem install rails
+
 
 How to start:
   - Add to this File at "Features in Development" your feature
@@ -27,4 +33,3 @@ Feature in Development:
   - Messageboard core features (Malte)
 
 Please add your feature name afterwards
-
