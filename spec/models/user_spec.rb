@@ -64,7 +64,7 @@ describe User do
   describe "password validation" do
 
     it "should require a passoword" do
-      User.new(@attr_merge(:password => "", :password_confirmation => "")).should_not be_valid
+      User.new(@attr.merge(:password => "", :password_confirmation => "")).should_not be_valid
     end
 
     it "should require a matching password confirmation" do
@@ -81,6 +81,18 @@ describe User do
       long = "a" * 5
       hash = @attr.merge(:password => long, :password_confirmation => long)
       User.new(hash).should_not be_valid
+    end
+
+  end
+
+  describe "password encryption" do
+
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    it "should have an encrypted password" do
+      @user.should respond_to(:encrypted_password)
     end
 
   end
