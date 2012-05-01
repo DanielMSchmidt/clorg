@@ -2,6 +2,10 @@ Clorg::Application.routes.draw do
 
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
+  match '/messages' => redirect('/board')
+  match '/board', :to => 'messages#index'
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

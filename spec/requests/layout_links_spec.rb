@@ -16,4 +16,7 @@ describe "LayoutLinks" do
     get '/about'
     response.should have_selector('title', :content => "Clorg | &Uuml;ber uns")
   end
+
 end
+
+
