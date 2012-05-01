@@ -1,15 +1,21 @@
-<h1>New message</h1>
-
-
+<h2>New message</h2>
+<hr>
+<div class="create">
 <%= form_for @messages do |f| %>
-<%= f.label :userid %>:
-<%= f.text_field :userid %>
-
-<%= f.label :message %>:
-<%= f.text_field :message %>
-
+<div id="msgtoID">
+  <%= f.label :userid,"BenutzerID:" %>
+  <%= f.text_field :userid %>
+</div>
+<br>
+<div id="msgnewtxt">
+  <%= f.label :message,"Nachricht:" %>
+  <%= f.text_field :message %>
+</div>
+<div id="submit">
 <%= f.submit %>
+</div>
 <% end %>
 
+</div>
 
-
+	
