@@ -1,9 +1,0 @@
-class MessagesController < ApplicationController
-  def index
-	if @messages = Message.create(params[:message])
-		redirect_to "http://www.google.com"
-	else
-  		# error handling
-	end
-  end
-end	
