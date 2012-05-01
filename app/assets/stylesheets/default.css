@@ -196,6 +196,17 @@ p {
   margin-top:20px;
 }
 
+/* New User */
+.create .field {
+  padding:5px;
+}
+
+.create input {
+  margin-right:150px;
+}
+
+
+/* All */
 .nav, ., .grid_10  {
   border: 0px solid #666;
 }
