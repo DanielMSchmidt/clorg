@@ -41,6 +41,12 @@
       <h2>Navigation</h2>
       <menu>
           <hr>
+          <% if signed_in? %>
+           <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+          <% else %>
+           <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+          <hr>
           <li>Nachrichten</li>
           <hr>
           <li>Profil</li>
