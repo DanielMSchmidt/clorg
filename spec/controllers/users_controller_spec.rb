@@ -83,5 +83,18 @@ describe UsersController do
         flash[:success].should =~ /welcome to the sample app/i
       end
     end
+
+    describe "with valid email and password" do
+
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        @attr = { :email => @user.email, :password => @user.password }
+      end
+
+      it "should sign the user in" do
+        post :create, :session => @attr
+        response.should redirect_to(user_path(@user))
+      end
+    end
   end
 end
