@@ -160,6 +160,42 @@ p {
   margin:0px;
 }
 
+
+/*Create new Forms  ////////////////////////*/
+.create {
+  padding-left:50px;
+  padding-top:20px;
+}
+
+.create input {
+  float:right;
+  margin:0px;
+  margin-right:200px;
+  padding:0px;
+  border:solid 1px #111;
+  height:18px;
+}
+
+.create label {
+  float:left;
+  margin-bottom:0px;
+  padding:0px;
+  height:18px;
+}
+
+/* New Message */
+#msgtoID {
+  padding:5px;
+}
+#msgnewtxt {
+  padding:5px;
+  margin-bottom:10px;
+}
+#submit {
+  padding:5px;
+  margin-top:20px;
+}
+
 .nav, ., .grid_10  {
   border: 0px solid #666;
 }
