@@ -29,7 +29,7 @@ h2 {
 
 p {
   overflow: hidden;
-  padding: 10px 0;
+  padding:0px;
   text-align: left;
   float: left;
 }
@@ -165,6 +165,7 @@ p {
 .create {
   padding-left:50px;
   padding-top:20px;
+  padding-bottom:50px;
 }
 
 .create input {
@@ -205,7 +206,22 @@ p {
   margin-right:150px;
 }
 
+/* Input Errors */
+#error_explanation {
+  border: solid 1px #000;
+  margin-bottom:10px;
+  background:;
+  width:500px;
+  padding:5px;
 
+}
+
+#error_explanation h2 {
+  color:#ff2929;
+  font-size:20px;
+  margin-bottom:3px;
+  
+}
 /* All */
 .nav, ., .grid_10  {
   border: 0px solid #666;
