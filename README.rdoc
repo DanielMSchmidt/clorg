@@ -39,11 +39,14 @@ Git-flow could be downloaded on Launchpad:
 
 Features Developed
   - simple static Pages with named routes (refering to them by using about_path etc)
+  - User signup
 
 Feature in Development:
   - Design & Frontend (David)
-  - Login System (Daniel)
+  - Login System, Signin and out(Daniel)
   - Testing (Linus)
   - Messageboard core features (Malte)
 
 Please add your feature name afterwards
+
+  feature/messageboard (Malte)
