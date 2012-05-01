@@ -7,10 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <h1><%=@title%></h1>
+ <div class="container_12">
+  <div class="grid_12">
+    <div class="header">
+      <h1><%=@title%></h1>
+    </div>
+  </div> <!-- close grit_12 -->
+ 
+  <div class="clear"></div>
+  <div class="grid_8">
+    <div class="content">
     <%= yield %>
+    </div>
+  </div> <!-- close grit_8 -->
+
+  <div class="grid_1">
+      <p></p>
+  </div> <!-- close grit_1 -->
+
+  <div class="grid_3">
+    <div class="navigation"> 
+      <h2>Navigation</h2>
+      <menu>
+          <hr>
+          <li>Nachrichten</li>
+          <hr>
+          <li>Profil</li>
+          <hr>
+      </menu>
+    </div> <!-- navigation -->
+  </div> <!-- close grit_3 -->
+  <div class="grid_12">
+   <div class="debug">
     <%= debug(params) if Rails.env.development?%>
-  </div>
+   </div>
+  </div> <!-- close grid_12 -->
+ </div> <!-- close container_12 -->
 </body>
 </html>
