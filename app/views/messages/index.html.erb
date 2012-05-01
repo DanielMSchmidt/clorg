@@ -1,0 +1,15 @@
+<h1>New message</h1>
+
+
+<%= form_for @messages do |f| %>
+<%= f.label :userid %>:
+<%= f.text_field :userid %>
+
+<%= f.label :message %>:
+<%= f.text_field :message %>
+
+<%= f.submit %>
+<% end %>
+
+
+
