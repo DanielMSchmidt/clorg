@@ -12,4 +12,5 @@
 *.DS_Store
 /*.lock
 /*.log
-/*.rb~
+
+*.rb~
