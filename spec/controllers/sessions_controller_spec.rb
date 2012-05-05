@@ -9,15 +9,15 @@ describe SessionsController do
     end
 
     it "should have the right title" do
-      get :new
-      response.should have_selector("title", :content => "Sign in")
+      get 'new'
+      response.should have_selector("title", :content => "Clorg | Sign in")
     end
   end
   describe "POST 'create'" do
 
     describe "invalid signin" do
       before(:each) do
-        @attr = { :email => "email@example.com", :password => "invalid"}
+        @attr = { :email => "email@example.com", :password => "invalid" }
       end
 
       it "should re-render the new page" do
@@ -27,7 +27,7 @@ describe SessionsController do
 
       it "should have the right title" do
         post :create, :session => @attr
-        response.should have_selector("title", :content => "Sign in")
+        response.should have_selector("title", :content => "Clorg | Sign in")
       end
 
       it "should have a flash.now message" do
