@@ -6,63 +6,92 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-<body>
-<section class="round">
+  <body>
+    <section class="round">
 
- <!-- flash alert -->
- <% flash.each do |key,value| %>
-  <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
-
- <!-- HEADER -->
- <div class="container_12">
-  <div class="grid_12">
-    <div class="header">
-      <h1><%=@title%></h1>
-    </div>
-  </div> <!-- close grit_12 -->
-
-  <!-- CONTENT --> 
-  <div class="clear"></div>
-  <div class="grid_8">
-    <div class="content">
-    <%= yield %>
-    </div>
-  </div> <!-- close grit_8 -->
-
-  <!-- WHITE SPACE -->
-  <div class="grid_1">
-      <p></p>
-  </div> <!-- close grit_1 -->
-
-  <!-- NAVIGATION -->
-  <div class="grid_3">
-    <div class="navigation"> 
-      <h2>Navigation</h2>
-      <menu>
-          <hr>
-          <% if signed_in? %>
-           <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-          <% else %>
-           <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-          <hr>
-          <li>Nachrichten</li>
-          <hr>
-          <li>Profil</li>
-          <hr>
-      </menu>
-    </div> <!-- close navigation -->
-  </div> <!-- close grit_3 -->
-
-  <!-- DEBUG -->
-  <div class="grid_12">
-   <div class="debug">
-    <%= debug(params) if Rails.env.development?%>
-   </div>
-  </div> <!-- close grid_12 -->
-
- </div> <!-- close container_12 -->
-</section>
-</body>
+    <!-- flash alert--> 
+      <% flash.each do |key,value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      
+      <div class="container-fluid">
+        <!-- NAVIGATIONBAR-TOP-->
+        <div class="navbar navb ar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="brand" href="/">
+                Clorg<!--<%=@title%>-->
+              </a>
+              <ul class="nav">
+                <li>
+                  <a href="index.html">Start</a>
+                </li>
+                <li><a href="#">Groups</a></li>
+                <li><a href="#">News</a></li>
+                <% if signed_in? %>
+                 <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+                <% else %>
+                 <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>
+              </ul>
+              <div class="nav-collapse">
+                <form class="navbar-search pull-right">
+                  <input type="text" class="search-query" placeholder="Search">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div><!-- END NAVIGATIONBAR -->
+      
+        <!-- -->
+        <div class="row-fluid">
+          <!-- CONTENT --> 
+          <div class="span10 well">
+            <%= yield %>
+          </div>
+          <!-- END CONTENT -->
+        
+          <!-- NAVIGATION RIGHT -->
+          <div class="span2 sidebar-nav">
+            <ul class="nav nav-list nav-pills nav-stacked">
+              <li class="nav-header">Navigation</li>
+              <li class="active">
+                <a href="#">
+                  <i class="icon-home"></i>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-envelope"></i>
+                  Nachrichten
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-book"></i>
+                  Kalender
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-cog"></i>
+                  Einstellungen
+                </a>
+              </li>
+            </ul>
+          </div> <!-- END NAVIGATION -->
+        </div><!-- -->
+        <!-- FOOTER -->
+        <div class="row-fluid navbar-fixed-bottom">
+          <div class="pull-right" style="padding-right:20px;">
+          
+            <a href="about">About</a>
+            <a href="contact">Contact</a>
+            &copy Clorg 2012
+          </div>
+        </div><!-- END FOOTER -->
+      </div>
+    </section>
+  </body>
 </html>
