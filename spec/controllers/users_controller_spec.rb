@@ -186,7 +186,7 @@ describe UsersController do
 
     describe "for signed-in users" do
       before(:each) do
-        wrong_user = FactoryGirl.create(:user, :email => "user@example.net")
+        wrong_user = FactoryGirl.create(:user, :email => "user@example.net", :name => "anotherName")
         test_sign_in(wrong_user)
       end
 
