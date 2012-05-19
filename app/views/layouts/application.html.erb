@@ -22,7 +22,7 @@
     </div>
   </div> <!-- close grit_12 -->
 
-  <!-- CONTENT --> 
+  <!-- CONTENT -->
   <div class="clear"></div>
   <div class="grid_8">
     <div class="content">
@@ -37,19 +37,19 @@
 
   <!-- NAVIGATION -->
   <div class="grid_3">
-    <div class="navigation"> 
+    <div class="navigation">
       <h2>Navigation</h2>
       <menu>
           <hr>
           <% if signed_in? %>
+           <li><%= link_to "Profile", current_user %></li>
+           <li><%= link_to "Settings", edit_user_path(current_user) %></li>
            <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
           <% else %>
            <li><%= link_to "Sign in", signin_path %></li>
           <% end %>
           <hr>
           <li>Nachrichten</li>
-          <hr>
-          <li>Profil</li>
           <hr>
       </menu>
     </div> <!-- close navigation -->
