@@ -2,28 +2,8 @@
 <hr>
 <div class="create">
 <%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label :password_confirmation, "Passwort wiederholen" %> <br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div id="submit">
+  <%= render 'fields', :f => f %>
+  <div id="submit" class="actions">
     <%= f.submit "Anmeldung"%>
   </div>
 <% end %>
