@@ -38,16 +38,17 @@ Git-flow could be downloaded on Launchpad:
   https://launchpad.net/ubuntu/+archive/primary/+files/git-flow_0.4.1-2_all.deb
 
 Features Developed
-  - simple static Pages with named routes (refering to them by using about_path etc)
+  - simple static Pages with named routes
   - User signup
-  - Login System, Signin and out, updating Users(Daniel)
+  - Login System, Signin and out, updating Users, Site Restrictions (Daniel)
 Feature in Development:
   - Design & Frontend (David)
-  - siterestrictions (Daniel)
+  - admin (Daniel)
   - Testing (Linus)
   - Messageboard core features (Malte)
 
 Please add your feature name afterwards
 
   feature/messageboard (Malte)
-  feature/siterestrictions (Daniel)
+  feature/admin (Daniel)
+
