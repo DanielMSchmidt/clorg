@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     toBeDeleted = User.find(params[:id])
 
     if toBeDeleted == current_user
-      flash[:notice] = "Don't delete yourself"
+      flash[:notice] = "Don't delete yourself as admin"
     else
       toBeDeleted.destroy
       flash[:success] = "User destroyed."

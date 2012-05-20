@@ -292,7 +292,7 @@ describe UsersController do
         response.should redirect_to(users_path)
       end
 
-      it "should not be able to delete yourself as an admin" do
+      it "should protect yourself as an admin" do
         lambda do
           delete :destroy, :id => @admin
         end.should_not change(User, :count)
