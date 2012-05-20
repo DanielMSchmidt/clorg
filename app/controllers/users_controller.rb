@@ -48,8 +48,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+
+    toBeDeleted = User.find(params[:id])
+
+    if toBeDeleted == current_user
+      flash[:notice] = "Don't delete yourself"
+    else
+      toBeDeleted.destroy
+      flash[:success] = "User destroyed."
+    end
+
     redirect_to(users_path)
   end
 
@@ -67,4 +75,5 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+
 end
