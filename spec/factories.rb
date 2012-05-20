@@ -8,13 +8,13 @@ FactoryGirl.define do
     password_confirmation "safepassword"
   end
 
-FactoryGirl.sequence :email do |n|
-  "person-#{n}@example.de"
-end
+  Factory.sequence :email do |n|
+    "person-#{n}@example.de"
+  end
 
-FactoryGirl.sequence :Name do |n|
-  "My #{n}th Name"
-end
+  Factory.sequence :name do |n|
+    "My #{n}th Name"
+  end
 
 
 end

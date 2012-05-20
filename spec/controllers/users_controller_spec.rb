@@ -7,6 +7,7 @@ describe UsersController do
 
     describe "for non-signed-in users" do
 
+
       it "should deny access" do
         get :index
         response.should redirect_to(signin_path)
@@ -22,6 +23,9 @@ describe UsersController do
         third = FactoryGirl.create(:user, :email => "another@email.org", :name => "andanotherName")
 
         @users = [@user, second, third]
+        30.times do
+          @users << FactoryGirl.create(:user, :email => FactoryGirl.generate(:email), :name => FactoryGirl.generate(:name))
+        end
       end
 
       it "should be successful" do
@@ -36,9 +40,17 @@ describe UsersController do
 
       it "should have an element for each user" do
         get :index
-        @users.each do |user|
+        @users[0..2].each do |user|
           response.should have_selector("li", :content => user.name)
         end
+      end
+
+      it "should paginate users" do
+        get :index
+        response.should have_selector("div.pagination")
+        response.should have_selector("span", :content => "Previous")
+        response.should have_selector("a", :href => "/users?page=2", :content => "2")
+        response.should have_selector("a", :href => "/users?page=2", :content => "Next")
       end
     end
   end
