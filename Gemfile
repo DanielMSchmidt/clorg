@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'sqlite3-ruby', '>= 1.3.1', :require => 'sqlite3'
 gem 'gravatar_image_tag'
+gem 'will_paginate', '~> 3.0'
 
 
 group :development do
@@ -15,6 +16,7 @@ group :development do
   gem 'annotate',
       :git => 'git://github.com/jeremyolliver/annotate_models.git',
       :branch => 'rake_compatibility'
+  gem 'faker'
 end
 
 group :test do
