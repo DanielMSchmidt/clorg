@@ -1,5 +1,6 @@
 Versions:
   - v0.01: (12.04.12) Static pages, thats it
+  - v0.10: (21.05.12) Basic user functions and restricted sites
 
 Getting started with development:
   - install Ruby On Rails
