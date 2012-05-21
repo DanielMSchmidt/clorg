@@ -41,14 +41,15 @@ Features Developed
   - simple static Pages with named routes
   - User signup
   - Login System, Signin and out, updating Users, Site Restrictions (Daniel)
+  - admin (only delete so far) (Daniel)
 Feature in Development:
   - Design & Frontend (David)
-  - admin (Daniel)
+  - essential features for users (delete themselfes) (Daniel)
   - Testing (Linus)
   - Messageboard core features (Malte)
 
 Please add your feature name afterwards
 
   feature/messageboard (Malte)
-  feature/admin (Daniel)
+  feature/user-essentials (Daniel)
 
