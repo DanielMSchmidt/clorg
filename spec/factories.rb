@@ -1,5 +1,6 @@
 # By using the Symbol :user, we get Factory Girl to simulate the user model
 
+
 FactoryGirl.define do
   factory :user do
     name                  "Daniel Schmidt"
@@ -7,6 +8,7 @@ FactoryGirl.define do
     password              "safepassword"
     password_confirmation "safepassword"
   end
+
 
   Factory.sequence :email do |n|
     "person-#{n}@example.de"
@@ -16,5 +18,9 @@ FactoryGirl.define do
     "My #{n}th Name"
   end
 
+  factory :message do
+    content               "This is demo content"
+    association           :user
+  end
 
 end

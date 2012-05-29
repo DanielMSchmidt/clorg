@@ -147,7 +147,17 @@ describe User do
       @user.toggle!(:admin)
       @user.should be_admin
     end
+  end
 
+  describe "message associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+    end
+
+    it "should have a messages attribute" do
+      @user.should respond_to(:messages)
+    end
   end
 end
 
