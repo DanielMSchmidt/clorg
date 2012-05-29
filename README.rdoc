@@ -43,6 +43,7 @@ Features Developed
   - User signup
   - Login System, Signin and out, updating Users, Site Restrictions (Daniel)
   - admin (only delete so far) (Daniel)
+
 Feature in Development:
   - Design & Frontend (David)
   - essential features for users (delete themselfes) (Daniel)
