@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :email, :name, :password, :password_confirmation
 
-  has_many :messages
+  has_many :messages, :dependent => :destroy
 
   #regular expression to validate mail addresses
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
