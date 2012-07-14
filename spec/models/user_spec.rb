@@ -150,13 +150,18 @@ describe User do
   end
 
   describe "message associations" do
-
     before(:each) do
       @user = User.create(@attr)
+      @mp1 = FactoryGirl.create(:message , :user => @user, :created_at => 1.day.ago)
+      @mp2 = FactoryGirl.create(:message , :user => @user, :created_at => 1.hour.ago)
     end
 
-    it "should have a messages attribute" do
-      @user.should respond_to(:messages)
+    it "should habe a message attribute" do
+      @user.should respond_to(:message)
+    end
+
+    it "should habe the right microposts in the right order" do
+      @user.messages.should == [@mp2, @mp1]
     end
   end
 end
