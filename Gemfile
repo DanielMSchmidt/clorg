@@ -17,6 +17,7 @@ group :development do
       :git => 'git://github.com/jeremyolliver/annotate_models.git',
       :branch => 'rake_compatibility'
   gem 'faker'
+  gem 'bullet'
 end
 
 group :test do
