@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clorg | <%=@title%> </title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tags %>
+  </head>
+<body>
+<section class="round">
+
+ <!-- flash alert -->
+ <% flash.each do |key,value| %>
+  <div class="flash <%= key %>"><%= value %></div>
+  <% end %>
+
+ <!-- HEADER -->
+ <div class="container_12">
+  <div class="grid_12">
+    <div class="header">
+      <h1><%=@title%></h1>
+    </div>
+  </div> <!-- close grit_12 -->
+
+  <!-- CONTENT -->
+  <div class="clear"></div>
+  <div class="grid_8">
+    <div class="content">
+    <%= yield %>
+    </div>
+  </div> <!-- close grit_8 -->
+
+  <!-- WHITE SPACE -->
+  <div class="grid_1">
+      <p></p>
+  </div> <!-- close grit_1 -->
+
+  <!-- NAVIGATION -->
+  <div class="grid_3">
+    <div class="navigation">
+      <h2>Navigation</h2>
+      <menu>
+          <hr>
+          <% if signed_in? %>
+           <li><%= link_to "Profile", current_user %></li>
+           <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+           <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+          <% else %>
+           <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+          <hr>
+          <li>Nachrichten</li>
+          <hr>
+      </menu>
+    </div> <!-- close navigation -->
+  </div> <!-- close grit_3 -->
+
+  <!-- DEBUG -->
+  <div class="grid_12">
+   <div class="debug">
+    <%= debug(params) if Rails.env.development?%>
+   </div>
+  </div> <!-- close grid_12 -->
+
+ </div> <!-- close container_12 -->
+</section>
+</body>
+</html>

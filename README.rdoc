@@ -1,0 +1,59 @@
+Versions:
+  - v0.01: (12.04.12) Static pages, thats it
+  - v0.10: (21.05.12) Basic user functions and restricted sites
+
+Getting started with development:
+  - install Ruby On Rails
+  - clone the repsitory
+  - install git flow
+  - use the command git flow init
+  - press enter all the time
+  - git pull
+  - rails generate rspec:install
+
+Getting started with Ubuntu:
+  How to install ruby on rails on ubuntu
+
+   ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
+   ~$ sudo gem install rails
+
+
+How to start:
+  - Add to this File at "Features in Development" your feature
+  - Use git flow feature start YOUR_FEATURE to start a new feature (should not be a longer one then one week)
+  - develop your feature
+  - Use git flow feature finish YOUR_FEATURE
+
+Getting started with Ubuntu:
+
+How to install ruby on rails on ubuntu
+  ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
+  ~$ sudo gem install rails
+
+for Git:
+  ~$ sudo apt-get install -y git-core git-gui git-doc
+How to configure git:
+  http://help.github.com/linux-set-up-git/
+
+Git-flow could be downloaded on Launchpad:
+  https://launchpad.net/ubuntu/+archive/primary/+files/git-flow_0.4.1-2_all.deb
+
+Features Developed:
+  - simple static Pages with named routes
+  - User signup
+  - Login System, Signin and out, updating Users, Site Restrictions (Daniel)
+  - admin (only delete so far) (Daniel)
+
+Features in Development:
+  - Design & Frontend (David)
+  - Testing (Linus)
+  - Messageboard core features (Malte&Daniel)
+
+Features to be Developed:
+  - essential features for users (deactivate themselfes) (Daniel)
+
+Please add your feature name afterwards
+
+  feature/messageboard (Malte)
+  feature/messageboard-2 (Daniel)
+

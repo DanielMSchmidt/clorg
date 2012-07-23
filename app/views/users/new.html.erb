@@ -1,0 +1,10 @@
+<h2> Sign up </h2>
+<hr>
+<div class="create">
+<%= form_for(@user) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div id="submit" class="actions">
+    <%= f.submit "Anmeldung"%>
+  </div>
+<% end %>
+</div>
