@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
-    @comments = Message.comments
+    @comments = @message.comments
   end
 
   def new
