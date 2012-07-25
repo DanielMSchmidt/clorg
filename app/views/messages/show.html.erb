@@ -4,6 +4,12 @@
   <b>Content:</b>
   <%= @message.content %>
 </p>
+<p>
+	<b>Comments</b>
+	<%= render @comments %>
+</p>
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>
+  
