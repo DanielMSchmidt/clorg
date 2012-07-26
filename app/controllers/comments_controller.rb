@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
-
+  before_filter :get_message
   def index
-    @comments = Comment.all
+    @comments = @message.comments
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @comment = @message.comments.find(params[:id])
   end
 
   def new
@@ -13,21 +13,22 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = @message.comments.find(params[:id])
   end
 
   def create
     @comment = Comment.new(params[:comment])
+    @comment.user_id = current_user
+    @comment.message_id = @message.id
     if @comment.save
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      redirect_to @message, notice: 'Comment was successfully created.'
     else
       render action: "new" 
     end
   end
 
   def update
-    @comment = Comment.find(params[:id])
-
+    @comment = @message.comments.find(params[:id])
     if @comment.update_attributes(params[:comment])
       redirect_to @comment, notice: 'Comment was successfully updated.'
     else
@@ -36,9 +37,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @message = @comment.message
+    @comment = @message.comments.find(params[:id])
     @comment.destroy
     redirect_to @message
+  end
+
+  def get_message
+    @message = Message.find(params[:message_id])
   end
 end
