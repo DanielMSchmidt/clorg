@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <% if @user.errors.any? %>
   <div class="alert alert-error">
     <a class="close" data-dismiss="alert" href="#">×</a>
@@ -15,21 +14,3 @@
   </div>
   
 <% end %>
-=======
-<% if object.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(object.errors.count, "error") %>
-      prohibited this <%= object.class.to_s.underscore.humanize.downcase %>
-      from being saved:
-    </h2>
-    <p>There were problems with the following fields:</p>
-    <ul>
-    <% object.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-
-<% end %>
->>>>>>> 08e025d73e1952a596bb52b08a4b2ec99c5ba5cd
