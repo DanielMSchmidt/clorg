@@ -29,8 +29,9 @@ class CommentsController < ApplicationController
 
   def update
     @comment = @message.comments.find(params[:id])
+
     if @comment.update_attributes(params[:comment])
-      redirect_to @comment, notice: 'Comment was successfully updated.'
+      redirect_to [@message, @comment], notice: 'Comment was successfully updated.'
     else
       render action: "edit" 
     end
