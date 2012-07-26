@@ -24,10 +24,10 @@
               </a>
               <ul class="nav">
                 <li>
-                  <a href="/">Start</a>
+                  <%= link_to "Start", root_path %>
                 </li>
-                <li><a href="#">Groups</a></li>
-                <li><a href="#">News</a></li>
+                <li><%= link_to "About", about_path %></li>
+                <li><%= link_to "Contact", contact_path %></li>
                 <% if signed_in? %>
                  <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
                 <% else %>
@@ -62,21 +62,21 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="<%= messages_path %>">
                   <i class="icon-envelope"></i>
-                  Nachrichten
+                  Messages
                 </a>
               </li>
               <li>
                 <a href="#">
                   <i class="icon-book"></i>
-                  Kalender
+                  Calender
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="<%= users_path %>">
                   <i class="icon-cog"></i>
-                  Einstellungen
+                  Settings
                 </a>
               </li>
             </ul>
