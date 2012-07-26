@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	<b>User: </b>
+	<%= @message.user.name %>,
+	<%= @message.user.id %>
   <b>Content:</b>
   <%= @message.content %>
+  Show <%= link_to pluralize(@message.comments.size, ' Comments'), message_comments_path(@message)  %>
+  <%= link_to 'write Comment', new_message_comment_path(@message)  %>
 </p>
-<p>
-	<b>Comments</b>
-	<%= render @comments %>
-</p>
-<%= render 'comments/form' %>
+<div class="comments">
+  <%= render @comments %>
+</div>
 
 <%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>
