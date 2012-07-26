@@ -13,6 +13,8 @@ Clorg::Application.routes.draw do
   match '/messages' => redirect('/board')
   match '/board', :to => 'messages#index'
 
+  match '/img/:name', :to => redirect('/assets/%{name}.png') 
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
