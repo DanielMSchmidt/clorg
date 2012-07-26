@@ -10,7 +10,6 @@
 /log/*.log
 /tmp
 *.DS_Store
-/*.lock
 /*.log
 
 *.rb~

@@ -7,6 +7,14 @@ FactoryGirl.define do
     password              "safepassword"
     password_confirmation "safepassword"
   end
-  
+
+  Factory.sequence :email do |n|
+    "person-#{n}@example.de"
+  end
+
+  Factory.sequence :name do |n|
+    "My #{n}th Name"
+  end
+
 
 end
