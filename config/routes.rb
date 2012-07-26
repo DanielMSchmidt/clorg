@@ -1,5 +1,9 @@
 Clorg::Application.routes.draw do
 
+  resources :messages do
+    resources :comments
+  end
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
