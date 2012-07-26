@@ -1,8 +1,0 @@
-<% unless flash.empty? %>
-  <div class="alert alert-error">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-  <% flash.each do |key,value| %>
-    <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
-  </div>
-<% end %>
