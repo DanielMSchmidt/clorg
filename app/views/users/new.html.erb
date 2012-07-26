@@ -1,18 +1,19 @@
 <h2> Sign up </h2>
-    <%= render 'shared/error_messages' %><br>
+
+  <div class="fluid-row">
+  <div class="span7">
 <div class="form-horizontal">
 <%= form_for(@user, :class => "form-horizontal" ) do |f| %>
 
 
   <fieldset>
-
     <!-- USERNAME -->
     <div class="control-group">
       <%= f.label :name, :class => "control-label", :for => "prependedInput" %>
       <div class="controls">
         <div class="input-prepend">
           <span class="add-on"><i class="icon-user"></i></span>
-          <%= f.text_field :name, :class => "input-x<large", :id => "prependedInput", :size => "6" %>
+          <%= f.text_field :name, :class => "input-xlarge", :id => "prependedInput", :size => "6" %>
         </div>
       </div>
     </div>
@@ -54,4 +55,9 @@
     <%= f.submit "Anmeldung", :class => "btn btn-primary" %>
   </fieldset>
 <% end %>
+</div>
+</div><!-- END SPAN6 -->
+<div class="span5">
+    <%= render 'shared/error_messages' %>
+</div>
 </div>

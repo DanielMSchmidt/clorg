@@ -9,10 +9,7 @@
   <body>
     <section class="round">
 
-    <!-- flash alert--> 
-      <% flash.each do |key,value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
+    <!-- flash alert-->
       
       <div class="container-fluid">
         <!-- NAVIGATIONBAR-TOP-->
@@ -22,16 +19,28 @@
               <a class="brand" href="/">
                 Clorg<!--<%=@title%>-->
               </a>
+              <!-- <%=  controller.action_name %> -->
               <ul class="nav">
-                <li>
+                <li <% if controller.action_name == "home"%>class="active"<% end %>>
                   <%= link_to "Start", root_path %>
                 </li>
-                <li><%= link_to "About", about_path %></li>
-                <li><%= link_to "Contact", contact_path %></li>
+                <li <% if controller.action_name == "about"%>class="active"<% end %>>
+                   <%= link_to "About", about_path %>
+                </li>
+                <li <% if controller.action_name == "contact"%>class="active"<% end %>>
+                   <%= link_to "Contact", contact_path %>
+                </li>
                 <% if signed_in? %>
-                 <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+                 <li <% if controller.controller_name == "sessions"%>class="active"<% end %>>
+                     <%= link_to "Sign out", signout_path, :method => :delete %>
+                </li>
                 <% else %>
-                 <li><%= link_to "Sign in", signin_path %></li>
+                 <li <% if controller.controller_name == "sessions"%>class="active"<% end %>>
+                     <%= link_to "Sign in", signin_path %>
+                </li>
+                 <li <% if (controller.controller_name == "users") && (controller.action_name == "new") %>class="active"<% end %>>
+                     <%= link_to "Sign up", signup_path %>
+                </li>
                 <% end %>
               </ul>
               <div class="nav-collapse">
@@ -46,41 +55,15 @@
         <!-- -->
         <div class="row-fluid">
           <!-- CONTENT --> 
-          <div class="span10 well">
+          <div class="<% if signed_in? %>span10<% else %>span12<% end %> well">
             <%= yield %>
           </div>
           <!-- END CONTENT -->
+          <% if signed_in? %>
+          <%= render 'shared/navigation_right' %>
+          <% end %>
         
-          <!-- NAVIGATION RIGHT -->
-          <div class="span2 sidebar-nav">
-            <ul class="nav nav-list nav-pills nav-stacked">
-              <li class="nav-header">Navigation</li>
-              <li class="active">
-                <a href="#">
-                  <i class="icon-home"></i>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="<%= messages_path %>">
-                  <i class="icon-envelope"></i>
-                  Messages
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="icon-book"></i>
-                  Calender
-                </a>
-              </li>
-              <li>
-                <a href="<%= users_path %>">
-                  <i class="icon-cog"></i>
-                  Settings
-                </a>
-              </li>
-            </ul>
-          </div> <!-- END NAVIGATION -->
+
         </div><!-- -->
         <!-- FOOTER -->
         <div class="row-fluid navbar-fixed-bottom">

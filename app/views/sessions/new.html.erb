@@ -1,4 +1,5 @@
 <h2>Sign in</h2></br>
+<%= render 'shared/flash_alert' %>
 <div class="row-fluid">
   <div class="span4 form-inline">
     <%= form_for(:session, :url => sessions_path) do |f| %>
