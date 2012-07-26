@@ -1,0 +1,1 @@
+http://railscasts.com/episodes/174-pagination-with-ajax

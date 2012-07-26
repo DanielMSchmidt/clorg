@@ -7,7 +7,6 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     @comments = @message.comments
-    @comment =  @comments.new 
   end
 
   def new
@@ -20,6 +19,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(params[:message])
+    @message.user_id = current_user.id
     if @message.save
       redirect_to @message, notice: 'Message was successfully created.'
     else

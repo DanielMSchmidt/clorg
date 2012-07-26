@@ -5,16 +5,7 @@
   <%= @comment.content %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @comment.user_id %>
-</p>
 
-<p>
-  <b>Post:</b>
-  <%= @comment.post_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_message_comment_path(@message, @comment) %>
+<%= link_to 'Destroy', [@message, @comment], :method => :delete, :confirm => "Are you sure?"  %>
+<%= link_to 'Back', message_path(@message) %>

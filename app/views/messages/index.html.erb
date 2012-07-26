@@ -1,24 +1,21 @@
-<h1>Listing messages</h1>
-
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Reply</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @messages.each do |message| %>
-  <tr>
-    <td><%= message.content %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<h2>New message</h2>
+<hr>
+<div class="create">
+<%= form_for @messages do |f| %>
+<div id="msgtoID">
+  <%= f.label :userid,"BenutzerID:" %>
+  <%= f.text_field :userid %>
+</div>
+<br>
+<div id="msgnewtxt">
+  <%= f.label :message,"Nachricht:" %>
+  <%= f.text_field :message %>
+</div>
+<div id="submit">
+<%= f.submit %>
+</div>
 <% end %>
-</table>
 
-<br />
+</div>
 
-<%= link_to 'New Message', new_message_path %>
+	
