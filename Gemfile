@@ -1,14 +1,13 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.3'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 
+
+group :production, :staging do
+  gem "pg" #Postgres DB to deploy into heroku
+end
 
 group :development do
   gem 'sqlite3'
