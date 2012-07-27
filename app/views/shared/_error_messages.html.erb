@@ -1,0 +1,16 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-error">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <h4 class="alert-heading">
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this user from being saved: 
+    </h4>
+    There were problems with the following fields:
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li> <%=msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  
+<% end %>

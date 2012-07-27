@@ -1,0 +1,6 @@
+Comments of this Message: 
+<% @comments.each do |comment| %>
+  <ul> <%= comment.content %></ul>
+  <%= link_to 'Edit', edit_message_comment_path(@message, comment) %>
+  <%= link_to 'Destroy', [@message, comment], confirm: 'Are you sure?', method: :delete %>
+<%end%>
