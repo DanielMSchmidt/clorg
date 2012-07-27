@@ -1,7 +1,7 @@
 Versions:
   - v0.01: (12.04.12) Static pages, thats it
   - v0.02: (21.05.12) Basic user functions and restricted sites
-  - v0.03: (27.07.12) Basic functions of messageboard (without filters, but with comments )
+  - v0.1: (27.07.12) Basic functions of messageboard (without filters, but with comments )
 
 Getting started with development:
   - install Ruby On Rails
