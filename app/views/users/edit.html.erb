@@ -1,10 +1,4 @@
 <h1>Edit user</h1>
 
-<%= form_for(@user) do |f| %>
-  <%= render 'fields', :f => f %>
-  	<%= link_to "Delete yourself", @user, :method => :delete, :confirm => "Do you really want to quit from clorg?",
-                                :title => "Are you sure?" %>           	
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+<%= render 'fields', send: "Update",  %>
+<%= render 'shared/bootstrap/button', name: "Delete yourself", to: @user, which_method: :delete, confirmation: "Do you really want to quit from clorg?", the_title: "Are you sure?" %>

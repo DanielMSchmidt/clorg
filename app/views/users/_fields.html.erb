@@ -8,6 +8,6 @@
 	
 	<%= render 'shared/bootstrap/input_field', function: f, tag: :password_confirmation, alt: "Passwort wiederholen", symbol: '<i class="icon-log"></i>', type: "password_field" %>
 	<!-- SUBMIT -->
-    <%= f.submit "Anmeldung", :class => "btn btn-primary" %>
+    <%= f.submit send, :class => "btn btn-primary" %>
  </fieldset>
 <% end %>
