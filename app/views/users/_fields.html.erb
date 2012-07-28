@@ -1,5 +1,13 @@
-<%= render 'shared/error_messages', :object => f.object %>
-<%= render 'shared/field', function: f, tag: :name %> 
-<%= render 'shared/field', function: f, tag: :email %> 
-<%= render 'shared/field', function: f, tag: :password %> 
-<%= render 'shared/field', function: f, tag: :password_confirmation, alt: "Passwort wiederholen" %>
+<%= form_for(@user, :class => "form-horizontal" ) do |f| %>
+<fieldset>
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :name, symbol: '<i class="icon-user"></i>', type: "text_field" %> 
+
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: "@", type: "text_field" %> 
+
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field" %> 
+	
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :password_confirmation, alt: "Passwort wiederholen", symbol: '<i class="icon-log"></i>', type: "password_field" %>
+	<!-- SUBMIT -->
+    <%= f.submit "Anmeldung", :class => "btn btn-primary" %>
+ </fieldset>
+<% end %>
