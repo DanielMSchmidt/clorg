@@ -1,9 +1,6 @@
 <%= form_for([@message, @comment]) do |f| %>
-  <%= render 'shared/error_messages' %>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
-  </div>
+  <%= render 'shared/flash_alert' %>
+  <%= render 'shared/bootstrap/input_field', function: f, tag: :content, symbol: "", type: "text_area" %> 
   <div class="actions">
     <%= f.submit %>
   </div>

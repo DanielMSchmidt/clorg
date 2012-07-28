@@ -1,8 +1,5 @@
 <%= form_for(@message) do |f| %>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :content, symbol: "", type: "text_area" %> 
   <div class="actions">
     <%= f.submit %>
   </div>
