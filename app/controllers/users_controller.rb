@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy
+  before_filter :get_user, :only => [:show, :edit]
 
   def index
     @title = "All users"
@@ -9,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @title = @user.name
   end
 
@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
     if @user.save
       sign_in @user
 
@@ -62,6 +61,10 @@ class UsersController < ApplicationController
       flash[:notice] = "You shouldn't delete others."
     end
     redirect_to(users_path)
+  end
+
+  def get_user
+    @user = User.find(params[:id])
   end
 
   private
