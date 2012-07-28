@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
+  before_filter :get_message, :only => [:show, :edit, :destroy]
   
   def index
-    @messages = Message.all
+    @messages = Message.paginate(:per_page => 25, :page => params[:page])
   end
 
   def show
-    @message = Message.find(params[:id])
     @comments = @message.comments
   end
 
@@ -14,7 +14,6 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    @message = Message.find(params[:id])
   end
 
   def create
@@ -28,7 +27,6 @@ class MessagesController < ApplicationController
   end
 
   def update
-    @message = Message.find(params[:id])
     if @message.update_attributes(params[:message])
       redirect_to @message, notice: 'Message was successfully updated.'
     else
@@ -37,8 +35,11 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(params[:id])
     @message.destroy
     redirect_to messages_url
+  end
+
+  def get_message
+    @message = Message.find(params[:id])
   end
 end

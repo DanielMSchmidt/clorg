@@ -2,13 +2,13 @@
 <%= render 'shared/flash_alert' %>
 <div class="row-fluid">
   <div class="span4 form-inline">
-    <%= form_for(:session, :url => sessions_path) do |f| %>
+    <%= form_for(:session, :url => sessions_path , :class => "form-horizontal") do |f| %>
 
         <!-- LOGIN EMAIL -->
-        <%= f.text_field :email, :class => "input-small", :placeholder =>"Email" %>
+        <%= render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: '@', type: "text_field" %> 
 
         <!-- LOGIN PASSWORD -->
-        <%= f.password_field :password, :class => "input-small", :placeholder =>"Password" %>
+        <%= render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field" %> 
 
         <!-- LOGIN BUTTON -->
         <%= f.submit "Sign in", :class => "btn" %>

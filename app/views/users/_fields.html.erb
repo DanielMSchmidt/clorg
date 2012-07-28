@@ -1,20 +1,13 @@
-<%= render 'shared/error_messages', :object => f.object %>
-<div class="field">
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</div>
-<br>
-<div class="field">
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-</div>
-<br>
-<div class="field">
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-</div>
-<br>
-<div class="field">
-  <%= f.label :password_confirmation, "Passwort wiederholen" %> <br />
-  <%= f.password_field :password_confirmation %>
-</div>
+<%= form_for(@user, :class => "form-horizontal" ) do |f| %>
+<fieldset>
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :name, symbol: '<i class="icon-user"></i>', type: "text_field" %> 
+
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: "@", type: "text_field" %> 
+
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field" %> 
+	
+	<%= render 'shared/bootstrap/input_field', function: f, tag: :password_confirmation, alt: "Passwort wiederholen", symbol: '<i class="icon-log"></i>', type: "password_field" %>
+	<!-- SUBMIT -->
+    <%= f.submit send, :class => "btn btn-primary" %>
+ </fieldset>
+<% end %>
