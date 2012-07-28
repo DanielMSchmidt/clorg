@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :get_message, :except => [:index, :create, :new]
+  before_filter :get_message, :only => [:show, :edit, :destroy]
   
   def index
     @messages = Message.all

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :get_message
-  before_filter :get_comment, :except => [:index, :create, :new]
+  before_filter :get_comment, :only => [:show, :edit, :destroy]
 
   def index
     @comments = @message.comments
