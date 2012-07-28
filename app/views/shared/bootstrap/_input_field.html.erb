@@ -12,6 +12,8 @@
             <%= function.text_field tag, :class => "input-xlarge", :id => "prependedInput", :size => "6" %>
        <% when "password_field" %>
             <%= function.password_field tag, :class => "input-xlarge", :id => "prependedInput", :size => "6" %>
+       <% when "text_area" %>
+            <%= function.text_area tag, :class => "input-xlarge", :id => "prependedInput", :size => "6" %>
        <% else %>
             A selection mistake happened in bootstrap/input_field
       <%end%>
