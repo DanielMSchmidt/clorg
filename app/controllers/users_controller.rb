@@ -51,13 +51,16 @@ class UsersController < ApplicationController
 
     toBeDeleted = User.find(params[:id])
 
-    if toBeDeleted == current_user
-      flash[:notice] = "Don't delete yourself as admin"
+    if toBeDeleted == current_user 
+      if current_user.admin?
+        flash[:notice] = "Don't delete yourself as admin."
+      else
+        flash[:success] = "You destroyed yourself."
+        toBeDeleted.destroy  
+        redirect_to root_path
     else
-      toBeDeleted.destroy
-      flash[:success] = "User destroyed."
+      flash[:notice] = "You shouldn't delete others."
     end
-
     redirect_to(users_path)
   end
 
