@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_filter :get_message, :only => [:show, :edit, :destroy]
   
   def index
-    @messages = Message.all
+    @messages = Message.paginate(:per_page => 25, :page => params[:page])
   end
 
   def show
