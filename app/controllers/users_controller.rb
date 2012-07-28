@@ -57,6 +57,7 @@ class UsersController < ApplicationController
         flash[:success] = "You destroyed yourself."
         toBeDeleted.destroy  
         redirect_to root_path
+      end
     else
       flash[:notice] = "You shouldn't delete others."
     end
