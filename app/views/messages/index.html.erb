@@ -8,12 +8,12 @@
     </div>
     <div class="comments">
       <% comments_for(message).each do |comment| %>
-        <%= render 'comments/comment', comment: comment %>
+        <%= render 'comments/comment', comment: comment, message: message %>
       <% end %>
       <%= link_to 'Write Comment', new_message_comment_path(message) %>
     </div>
     <div id="control">
-      <% if current_user.admin? || current_user.id == message.user_id %>
+      <% if can_delete?(message) %>
         <%= link_to 'Edit', edit_message_path(message) %>
         <%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %>
       <% end %>
