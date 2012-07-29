@@ -3,8 +3,14 @@
 <%= render 'form' %>
 <% @messages.each do |message| %>
   <div id="<%= message.id %>">
-    <div id="content">
-      <%= message.content %>
+    <div id="message">
+      <%= render 'message', message: message %>
+    </div>
+    <div class="comments">
+      <% comments_for(message).each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+      <%= link_to 'Write Comment', new_message_comment_path(message) %>
     </div>
     <div id="control">
       <% if current_user.admin? || current_user.id == message.user_id %>
