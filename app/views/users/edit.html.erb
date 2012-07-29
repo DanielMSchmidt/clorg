@@ -1,8 +1,6 @@
 <h1>Edit user</h1>
 
-<%= form_for(@user) do |f| %>
-  <%= render 'fields', :f => f %>
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+<% if can_delete(@user) %>
+	<%= render 'fields', send: "Update",  %>
+	<%= render 'shared/bootstrap/button', name: "Delete yourself", to: @user, which_method: :delete, confirmation: "Do you really want to quit from clorg?", the_title: "Are you sure?" %>
 <% end %>
