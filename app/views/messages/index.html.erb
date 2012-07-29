@@ -3,11 +3,15 @@
 <%= render 'form' %>
 <% @messages.each do |message| %>
   <div id="<%= message.id %>">
-    <%= message.content %>      
-    <% if current_user.admin? || current_user.id == message.user_id %>
-      <%= link_to 'Edit', edit_message_path(message) %>
-      <%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %>
-    <% end %>
+    <div id="content">
+      <%= message.content %>
+    </div>
+    <div id="control">
+      <% if current_user.admin? || current_user.id == message.user_id %>
+        <%= link_to 'Edit', edit_message_path(message) %>
+        <%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %>
+      <% end %>
+    </div>
     <br />
   </div>
 <% end %>
