@@ -10,7 +10,7 @@
   <%= link_to 'write Comment', new_message_comment_path(@message)  %>
 </p>
 <div class="comments">
-  <%= render @comments %>
+  <%= render @comments, message: @message %>
 </div>
 
 <%= link_to 'Edit', edit_message_path(@message) %> |
