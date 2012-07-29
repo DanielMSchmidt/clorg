@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :get_message
-  before_filter :get_comment, :only => [:show, :edit, :destroy]
+  before_filter :get_comment, :only => [:show, :edit, :destroy, :update]
+  before_filter :new_comment, :only => [:index, :new]
 
   def index
     @comments = @message.comments
@@ -9,8 +10,7 @@ class CommentsController < ApplicationController
   def show
   end
 
-  def new
-    @comment = Comment.new
+  def new    
   end
 
   def edit
@@ -46,5 +46,9 @@ class CommentsController < ApplicationController
 
   def get_comment
     @comment = @message.comments.find(params[:id])
+  end
+
+  def new_comment
+    @comment = Comment.new
   end
 end
