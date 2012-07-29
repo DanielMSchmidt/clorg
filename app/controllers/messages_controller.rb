@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :get_message, :only => [:show, :edit, :destroy]
+  before_filter :get_message, :only => [:show, :edit, :destroy, :update]
+  before_filter :new_message, :only => [:index, :new]
   
   def index
     @messages = Message.paginate(:per_page => 25, :page => params[:page])
@@ -10,7 +11,6 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
   end
 
   def edit
@@ -37,6 +37,10 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     redirect_to messages_url
+  end
+
+  def new_message
+    @message = Message.new
   end
 
   def get_message
