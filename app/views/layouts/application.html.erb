@@ -21,18 +21,12 @@
               </a>
               <!-- <%=  controller.action_name %> -->
               <ul class="nav">
-                <li <% if controller.action_name == "home"%>class="active"<% end %>>
-                  <%= link_to "Start", root_path %>
-                </li>
-                <li <% if controller.action_name == "about"%>class="active"<% end %>>
-                   <%= link_to "About", about_path %>
-                </li>
-                <li <% if controller.action_name == "contact"%>class="active"<% end %>>
-                   <%= link_to "Contact", contact_path %>
-                </li>
+                <%= ca_li_link_to "Start", root_path %>
+                <%= ca_li_link_to "About", about_path %>
+                <%= ca_li_link_to "Contact", contact_path %>
                 <% if signed_in? %>
                  <li <% if controller.controller_name == "sessions"%>class="active"<% end %>>
-                     <%= link_to "Sign out", signout_path, :method => :delete %>
+                     <%= link_to "Sign out", signout_path, :html_options => {:method => :delete} %>
                 </li>
                 <% else %>
                  <li <% if controller.controller_name == "sessions"%>class="active"<% end %>>
