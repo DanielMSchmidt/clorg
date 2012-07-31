@@ -1,0 +1,10 @@
+= form_for @user, :class => "form-horizontal" do |f|
+	%fieldset
+		= render 'shared/bootstrap/input_field', function: f, tag: :name, symbol: '<i class="icon-user"></i>', type: "text_field"
+		= render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: "@", type: "text_field"
+		= render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field"
+		= render 'shared/bootstrap/input_field', function: f, tag: :password_confirmation, alt: "Passwort wiederholen", symbol: '<i class="icon-log"></i>', type: "password_field"
+		= render 'shared/bootstrap/input_field', function: f, tag: :phone, symbol: "Tel", type: "text_field", :alt_caption => "Telefonnummer"
+		= render 'shared/bootstrap/input_field', function: f, tag: :street, symbol: "@", type: "text_field", :alt_caption => "Straße"
+		= render 'shared/bootstrap/input_field', function: f, tag: :zip, symbol: "@", type: "text_field", :alt_caption => "PLZ"
+		= render 'shared/bootstrap/input_field', function: f, tag: :location, symbol: "@", type: "text_field", :alt_caption => "Ort"
