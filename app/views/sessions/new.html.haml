@@ -1,0 +1,17 @@
+%h2 Sign in
+= render 'shared/flash_alert'
+.row-fluid
+  .span4.form-inline
+    = form_for(:session, :url => sessions_path , :class => "form-horizontal") do |f|
+      / LOGIN EMAIL
+      = render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: '@', type: "text_field", caption: "E-Mail"
+      / LOGIN PASSWORD
+      = render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field", caption: "Passwort"
+      / LOGIN BUTTON
+      = f.submit "Sign in", :class => "btn"
+  / END SPAN6
+  .span8
+    %p
+      New user? #{link_to "Sign up now!", signup_path}
+  / END SPAN6
+/ END ROW-FLUID

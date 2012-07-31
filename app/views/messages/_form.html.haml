@@ -1,0 +1,4 @@
+= form_for(@message) do |f|
+  = render 'shared/bootstrap/input_field', function: f, tag: :content, symbol: "", type: "text_area", caption: "Nachricht"
+  .actions
+    = f.submit
