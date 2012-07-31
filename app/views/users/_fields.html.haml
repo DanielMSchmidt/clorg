@@ -1,11 +1,44 @@
-= form_for @user, :class => "form-horizontal" do |f|
-	%fieldset
-		= render 'shared/bootstrap/input_field', function: f, tag: :name, symbol: '<i class="icon-user"></i>', type: "text_field", caption: "Name"
-		= render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: "@", type: "text_field", caption: "E-Mail"
-		= render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field", caption: "Passwort"
-		= render 'shared/bootstrap/input_field', function: f, tag: :password_confirmation, symbol: '<i class="icon-log"></i>', type: "password_field", caption: "Passwort wiederholen"
-		= render 'shared/bootstrap/input_field', function: f, tag: :phone, symbol: "Tel", type: "text_field", caption: "Telefonnummer"
-		= render 'shared/bootstrap/input_field', function: f, tag: :street, symbol: "@", type: "text_field", :caption => "Straße"
-		= render 'shared/bootstrap/input_field', function: f, tag: :zip, symbol: "@", type: "text_field", :caption => "PLZ"
-		= render 'shared/bootstrap/input_field', function: f, tag: :location, symbol: "@", type: "text_field", :caption => "Ort"
-		= f.submit "Sign up", :class => "btn"
+= simple_form_for(@user, :html => { :class => 'form-horizontal' }) do |f|
+
+  = f.input :name, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-user"></i>
+    = f.input_field :name, :placeholder => "Name"
+
+    
+  = f.input :email, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-envelope"></i>
+    = f.input_field :email, :placeholder => "Name"
+
+  = f.input :password, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-lock"></i>
+    = f.password_field :password, :placeholder => "Passwort"
+  
+  = f.input :password_confirmation, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-lock"></i>
+    = f.password_field :password_confirmation, :placeholder => "Passwort wiederholen"
+  
+  = f.input :phone, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-comment"></i>
+    = f.input_field :phone, :placeholder => "Telefonnummer"
+  
+  = f.input :street, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-home"></i>
+    = f.input_field :street, :placeholder => "Straße und Hausnummer"
+  
+  = f.input :zip, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-home"></i>
+    = f.input_field :zip, :placeholder => "PLZ"
+  
+  = f.input :location, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-home"></i>
+    = f.input_field :location, :placeholder => "Ort"
+  
+  = f.submit "Sign up", :class => "btn btn-primary"
