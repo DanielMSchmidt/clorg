@@ -8,7 +8,11 @@ module ApplicationHelper
 	end
 
 	def can_delete?(obj)
-		return current_user.admin? || current_user.id == obj.user_id
+		if obj.class.to_s != "User"
+			return current_user.admin? || current_user.id == obj.user_id
+		else
+			return current_user.admin? || current_user.id == obj.id
+		end
 	end
 
 	def ca_li_link_to(title, link, action=title.downcase ,options={})
