@@ -1,12 +1,7 @@
 - # How to use:
 - # render 'shared/bootstrap/input_field', function: f, tag: (:name or :email, etc) , symbol: '<i class="icon-user"></i>', type: ("text_field" or "password_field"
-- if alt_caption
-- name = tag
-- else
-- name = alt_caption
-- end
 .control-group
-  = function.label name, :class => "control-label", :for => "prependedInput"
+  = function.label caption, :class => "control-label", :for => "prependedInput"
   .controls
     .input-prepend
       %span.add-on= raw(symbol)

@@ -1,5 +1,5 @@
 = form_for([@message, @comment]) do |f|
   = render 'shared/flash_alert'
-  = render 'shared/bootstrap/input_field', function: f, tag: :content, symbol: "", type: "text_area"
+  = render 'shared/bootstrap/input_field', function: f, tag: :content, symbol: "", type: "text_area", caption: "Kommentar"
   .actions
     = f.submit
