@@ -1,14 +1,19 @@
 %h2 Sign in
 = render 'shared/flash_alert'
 .row-fluid
-  .span4.form-inline
-    = form_for(:session, :url => sessions_path , :class => "form-horizontal") do |f|
-      / LOGIN EMAIL
-      = render 'shared/bootstrap/input_field', function: f, tag: :email, symbol: '@', type: "text_field", caption: "E-Mail"
-      / LOGIN PASSWORD
-      = render 'shared/bootstrap/input_field', function: f, tag: :password, symbol: '<i class="icon-log"></i>', type: "password_field", caption: "Passwort"
-      / LOGIN BUTTON
-      = f.submit "Sign in", :class => "btn"
+  = simple_form_for(:session, :url => sessions_path , :html => { :class => 'form-horizontal' }) do |f|
+    / LOGIN EMAIL
+    = f.input :email, :wrapper => :prepend, :label => false do
+      %span.add-on
+        <i class="icon-envelope"></i>
+      = f.input_field :email, :placeholder => "E-Mail"
+    / LOGIN PASSWORD
+    = f.input :password, :wrapper => :prepend, :label => false do
+      %span.add-on
+        <i class="icon-lock"></i>
+      = f.password_field :password, :placeholder => "Password"
+    / LOGIN BUTTON
+    = f.submit "Sign in", :class => "btn"
   / END SPAN6
   .span8
     %p

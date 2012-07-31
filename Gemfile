@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 gem "haml"
+gem 'simple_form'
 
 
 group :production, :staging do

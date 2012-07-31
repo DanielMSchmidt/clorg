@@ -1,5 +1,8 @@
-= form_for([@message, @comment]) do |f|
+= simple_form_for([@message, @comment]) do |f|
   = render 'shared/flash_alert'
-  = render 'shared/bootstrap/input_field', function: f, tag: :content, symbol: "", type: "text_area", caption: "Kommentar"
+  = f.input :content, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-comment"></i>
+    = f.input_field :content, :placeholder => "Kommentar"
   .actions
     = f.submit
