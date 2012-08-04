@@ -2,8 +2,14 @@ class MessagesController < ApplicationController
   before_filter :get_message, :only => [:show, :edit, :destroy, :update]
   before_filter :new_message, :only => [:index, :new]
   
-  def index
-    @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
+  def index(*tag_id)
+    if tag_id.empty?
+      @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
+    else
+      tag = Tag.find(tag_id.first)
+      @test = tag.name
+      @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
+    end
   end
 
   def show
