@@ -1,7 +1,7 @@
 class Message < ActiveRecord::Base
   attr_accessible :content, :user_id
 
-  has_many :message_tag_assignments
+  has_many :messageTagAssignments, dependent: :delete_all
   has_many :tags, through: :message_tag_assignments
 
   has_many :comments
