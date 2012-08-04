@@ -3,5 +3,10 @@
     %span.add-on
       <i class="icon-file"></i>
     = f.input_field :content, :placeholder => "Nachricht"
+    = f.hidden_field :tag_id
   .actions
     = f.submit
+
+- @tags.each do |t|
+  %a{:onClick => "$('#message_tag_id').val(#{t.id});"}
+    = t.name

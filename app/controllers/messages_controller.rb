@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   before_filter :new_message, :only => [:index, :new]
   
   def index
+    @tags = Tag.all
     @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
   end
 
