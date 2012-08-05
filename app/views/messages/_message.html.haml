@@ -1,2 +1,12 @@
-= message.user_id
-= message.content
+= div_for(message) do
+  = message.user_id
+  = message.content
+  .comments
+    - comments_for(message).each do |comment|
+      = render 'comments/comment', comment: comment, message: message
+      = link_to 'Write Comment', new_message_comment_path(message)
+  #control
+    - if can_delete?(message)
+      = link_to 'Edit', edit_message_path(message)
+      = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete
+  %br
