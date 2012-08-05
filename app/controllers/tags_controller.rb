@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_filter :check_auth
   # GET /tags
   def index
     @tags = Tag.all
@@ -52,5 +53,10 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @tag.destroy
     redirect_to tags_url
+  end
+
+  def check_auth
+    deny_access unless signed_in?
+    redirect_to root_path, notice: "You have to be an admin to do this" unless current_user.admin?
   end
 end
