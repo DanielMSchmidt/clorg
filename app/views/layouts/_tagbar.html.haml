@@ -1,4 +1,4 @@
 .btn-group
   - @tags.each do |t|
-    %a{:onClick => "$('#message_tag_id').val(#{t.id});", :class => "btn btn-primary"}
-      = t.name
+    = div_for(t) do
+      = link_to t.name, t, remote: true
