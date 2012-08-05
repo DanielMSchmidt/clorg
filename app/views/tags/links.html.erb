@@ -1,0 +1,3 @@
+<% @tags.each do |t| %>
+	<a onClick="$('#message_tag_id').val(<%= t.id %>);" > <%= t.name %> </a>
+<% end %>
