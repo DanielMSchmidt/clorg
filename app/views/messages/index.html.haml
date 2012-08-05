@@ -1,4 +1,8 @@
 %h1 Latest Messages
+%br
+%br
+- if !@tags.nil?
+  = render 'layouts/tagbar'  
 %h3 Write a Message
 = render 'form'
 - @messages.each do |message|
@@ -8,10 +12,9 @@
     .comments
       - comments_for(message).each do |comment|
         = render 'comments/comment', comment: comment, message: message
-      = link_to 'Write Comment', new_message_comment_path(message)
+        = link_to 'Write Comment', new_message_comment_path(message)
     #control
       - if can_delete?(message)
         = link_to 'Edit', edit_message_path(message)
         = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete
-    %br/
-= link_to 'New Message', new_message_path
+        %br

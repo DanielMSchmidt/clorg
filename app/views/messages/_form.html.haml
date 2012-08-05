@@ -6,7 +6,3 @@
     = f.hidden_field :tag_id
   .actions
     = f.submit
-
-- @tags.each do |t|
-  %a{:onClick => "$('#message_tag_id').val(#{t.id});"}
-    = t.name
