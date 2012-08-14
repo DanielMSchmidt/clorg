@@ -1,10 +1,20 @@
 = div_for(message) do
-  = message.user_id
-  = message.content
+  .author
+    %p
+      Author:
+      = message.user.name
+  .content
+    %p
+      Content:
+      = message.content
+  .metainfo
+    %p
+      Created time ago:
+      = message.created_at.strftime("%H:%M %e.%m.%Y")
   .comments
     - comments_for(message).each do |comment|
       = render 'comments/comment', comment: comment, message: message
-      = link_to 'Write Comment', new_message_comment_path(message)
+    = link_to 'Write Comment', new_message_comment_path(message)
   #control
     - if can_delete?(message)
       = link_to 'Edit', edit_message_path(message)
