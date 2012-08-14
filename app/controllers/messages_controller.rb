@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   
   def index
     @tags = Tag.all
-    @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
+    @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments, :user)
   end
 
   def show
