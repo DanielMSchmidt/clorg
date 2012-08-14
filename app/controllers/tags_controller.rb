@@ -1,16 +1,15 @@
 class TagsController < ApplicationController
-  before_filter :check_auth
+  before_filter :check_auth, except: :show
   # GET /tags
   def index
     @tags = Tag.all
-
   end
 
   # GET /tags/1
   # GET /tags/1.js
   def show
     @tag = Tag.find(params[:id])
-    @messages = @tag.messages
+    @messages = @tag.messages unless @tag.nil?
     respond_to do |format|
       format.html # show.html.erb
       format.js #show.js.erb
