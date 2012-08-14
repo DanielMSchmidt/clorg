@@ -1,4 +1,6 @@
 .btn-group
+  .tag
+    = link_to "All", messages_path
   - @tags.each do |t|
     = div_for(t) do
       = link_to t.name, t, remote: true
