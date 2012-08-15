@@ -1,0 +1,33 @@
+/ NAVIGATIONBAR-TOP
+.navbar.navb.ar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand{:href => "/"}
+        Clorg
+        / <haml:loud>@title</haml:loud>
+      / <haml:loud>  controller.action_name </haml:loud>
+      %ul.nav
+        = ca_li_link_to "Start", root_path
+        = ca_li_link_to "About", about_path
+        = ca_li_link_to "Contact", contact_path
+        - if signed_in?
+          <li
+          - if controller.controller_name == "sessions"
+            class="active"
+          >
+          \#{link_to "Sign out", signout_path, :html_options => {:method => :delete}}
+        - else
+          <li
+          - if controller.controller_name == "sessions"
+            class="active"
+          >
+          \#{link_to "Sign in", signin_path}
+          <li
+          - if (controller.controller_name == "users") && (controller.action_name == "new")
+            class="active"
+          >
+          \#{link_to "Sign up", signup_path}
+      .nav-collapse
+        %form.navbar-search.pull-right
+          %input.search-query{:placeholder => "Search", :type => "text"}
+/ END NAVIGATIONBAR

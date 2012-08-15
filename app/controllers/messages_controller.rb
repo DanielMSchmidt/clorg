@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_filter :get_message, :only => [:show, :edit, :destroy, :update]
   before_filter :new_message, :only => [:index, :new]
+  before_filter :check_auth
   
   def index
     @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
@@ -45,5 +46,9 @@ class MessagesController < ApplicationController
 
   def get_message
     @message = Message.find(params[:id])
+  end
+
+  def check_auth
+    deny_access unless signed_in?
   end
 end

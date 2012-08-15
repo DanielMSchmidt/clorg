@@ -1,0 +1,44 @@
+= simple_form_for(@user, :html => { :class => 'form-horizontal' }) do |f|
+
+  = f.input :name, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-user"></i>
+    = f.input_field :name, :placeholder => "Name"
+
+    
+  = f.input :email, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-envelope"></i>
+    = f.input_field :email, :placeholder => "E-Mail"
+
+  = f.input :password, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-lock"></i>
+    = f.password_field :password, :placeholder => "Passwort"
+  
+  = f.input :password_confirmation, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-lock"></i>
+    = f.password_field :password_confirmation, :placeholder => "Passwort wiederholen"
+  
+  = f.input :phone, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-comment"></i>
+    = f.input_field :phone, :placeholder => "Telefonnummer"
+  
+  = f.input :street, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-home"></i>
+    = f.input_field :street, :placeholder => "Straße und Hausnummer"
+  
+  = f.input :zip, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-home"></i>
+    = f.input_field :zip, :placeholder => "PLZ"
+  
+  = f.input :location, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-home"></i>
+    = f.input_field :location, :placeholder => "Ort"
+  
+  = f.submit "Sign up", :class => "btn btn-primary"

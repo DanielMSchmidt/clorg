@@ -1,0 +1,7 @@
+= simple_form_for(@message) do |f|
+  = f.input :content, :wrapper => :prepend, :label => false do
+    %span.add-on
+      <i class="icon-file"></i>
+    = f.input_field :content, :placeholder => "Nachricht"
+  .actions
+    = f.submit

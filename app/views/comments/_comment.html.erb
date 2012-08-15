@@ -1,7 +1,0 @@
-<p> <%=comment.user_id%> => <%= comment.content %> </p>
-<% if can_delete?(comment) %>
-    <div class="btn-group">
-	<%= link_to 'Edit', edit_message_comment_path(message, comment), :class => "btn btn-mini btn-info" %>
-	<%= link_to 'Destroy', [message, comment], :class => "btn btn-mini btn-info",:method => :delete, :confirm => "Are you sure?"  %>
-    </div>
-<% end %>

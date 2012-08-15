@@ -1,0 +1,16 @@
+- # How to use:
+- # render 'shared/bootstrap/input_field', function: f, tag: (:name or :email, etc) , symbol: '<i class="icon-user"></i>', type: ("text_field" or "password_field"
+.control-group
+  = function.label caption, :class => "control-label", :for => "prependedInput"
+  .controls
+    .input-prepend
+      %span.add-on= raw(symbol)
+      - case type
+      - when "text_field"
+        = function.text_field tag, :class => "input-xlarge", :id => "prependedInput", :size => "6"
+      - when "password_field"
+        = function.password_field tag, :class => "input-xlarge", :id => "prependedInput", :size => "6"
+      - when "text_area"
+        = function.text_area tag, :class => "input-xlarge", :id => "prependedInput", :size => "6"
+      - else
+        A selection mistake happened in bootstrap/input_field
