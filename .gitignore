@@ -13,3 +13,4 @@
 /*.log
 
 *.rb~
+Gemfile.lock
