@@ -1,22 +1,24 @@
-= div_for(message) do
+= div_for(message, class: "well messagebox") do
   .author
     %p
       Author:
       = message.user.name
+    - if can_delete?(message)
+      #control.btn-group.pull-right
+        = link_to 'Edit', edit_message_path(message), class: "btn btn-primary"
+        = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete, class: "btn btn-primary"
   .content
     %p
       Content:
       = message.content
   .metainfo
     %p
-      Created time ago:
+      Created time:
       = message.created_at.strftime("%H:%M %e.%m.%Y")
-  .comments
+
+  .comments.well.commentsbox
     - comments_for(message).each do |comment|
       = render 'comments/comment', comment: comment, message: message
     = link_to 'Write Comment', new_message_comment_path(message)
-  #control
-    - if can_delete?(message)
-      = link_to 'Edit', edit_message_path(message)
-      = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete
+  
   %br

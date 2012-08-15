@@ -1,6 +1,6 @@
-.btn-group
-  .tag
+.btn-group.radio
+  .tag.btn.btn-primary
     = link_to "All", messages_path
   - @tags.each do |t|
-    = div_for(t) do
+    = div_for(t, class: "btn btn-primary") do
       = link_to t.name, t, remote: true
