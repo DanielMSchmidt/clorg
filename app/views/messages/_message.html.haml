@@ -1,2 +1,24 @@
-= message.user_id
-= message.content
+= div_for(message, class: "well messagebox") do
+  .author
+    %p
+      Author:
+      = message.user.name
+    - if can_delete?(message)
+      #control.btn-group.pull-right
+        = link_to 'Edit', edit_message_path(message), class: "btn btn-primary"
+        = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete, class: "btn btn-primary"
+  .content
+    %p
+      Content:
+      = message.content
+  .metainfo
+    %p
+      Created time:
+      = message.created_at.strftime("%H:%M %e.%m.%Y")
+
+  .comments.well.commentsbox
+    - comments_for(message).each do |comment|
+      = render 'comments/comment', comment: comment, message: message
+    = link_to 'Write Comment', new_message_comment_path(message)
+  
+  %br

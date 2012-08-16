@@ -10,11 +10,10 @@
     %section.round
       / flash alert
       .container-fluid
-        = render 'layouts/navigation_top'
-        / 
+        = render 'layouts/navigation_top' 
         .row-fluid
           / CONTENT
-          .if.else.well{:class => "<haml:silent> signed_in? </haml:silent><haml:block>span10</haml:block><haml:silent> </haml:silent><haml:block>span12</haml:block>"}
+          .span10.well
             = yield
           / END CONTENT
           - if signed_in?

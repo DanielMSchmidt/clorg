@@ -1,6 +1,9 @@
-%p
-  = comment.user_id
-  \=> #{comment.content}
-- if can_delete?(comment)
-  = link_to 'Edit', edit_message_comment_path(message, comment)
-  = link_to 'Destroy', [message, comment], :method => :delete, :confirm => "Are you sure?"
+.user
+  = comment.user_id # should be .user soon...
+.content
+  %p
+    = comment.content
+.controll
+  - if can_delete?(comment)
+    = link_to 'Edit', edit_message_comment_path(message, comment)
+    = link_to 'Destroy', [message, comment], :method => :delete, :confirm => "Are you sure?"

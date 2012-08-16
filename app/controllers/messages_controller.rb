@@ -4,7 +4,12 @@ class MessagesController < ApplicationController
   before_filter :check_auth
   
   def index
-    @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments)
+    @tags = Tag.all
+    @messages = Message.paginate(:per_page => 25, :page => params[:page]).includes(:comments, :user)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js #show.js.erb
+    end
   end
 
   def show

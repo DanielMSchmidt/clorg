@@ -1,17 +1,14 @@
 %h1 Latest Messages
-%h3 Write a Message
-= render 'form'
-- @messages.each do |message|
-  %div{:id => message.id}
-    #message
-      = render 'message', message: message
-    .comments
-      - comments_for(message).each do |comment|
-        = render 'comments/comment', comment: comment, message: message
-      = link_to 'Write Comment', new_message_comment_path(message)
-    #control
-      - if can_delete?(message)
-        = link_to 'Edit', edit_message_path(message)
-        = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete
-    %br/
-= link_to 'New Message', new_message_path
+%br
+.row-fluid
+  .span8
+    #messages
+      = render @messages
+  .span1
+  .span3
+    - if !@tags.nil?
+      = render 'layouts/tagbar'
+    %br
+    %h3 Write a Message
+    = render 'form'
+      

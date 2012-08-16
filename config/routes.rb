@@ -1,5 +1,7 @@
 Clorg::Application.routes.draw do
 
+  resources :tags
+
   resources :messages do
     resources :comments
   end

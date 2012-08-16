@@ -1,0 +1,5 @@
+$('#message_tag_id').val("<%= @tag.id %> ");
+$('.radio .tag').removeClass('active');
+$('#<%= dom_id(@tag) %>').addClass('active');
+$('#messages .message').fadeOut('slow').remove();
+$('#messages').append("<%= escape_javascript(render @messages) %>");
