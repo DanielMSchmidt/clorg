@@ -3,8 +3,9 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
-gem "haml"
+gem 'haml'
 gem 'simple_form'
+gem 'event-calendar', :require => 'event_calendar'
 
 
 group :production, :staging do
