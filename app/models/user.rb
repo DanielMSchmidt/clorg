@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :messages, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :events, :dependent => :destroy
 
   #regular expression to validate mail addresses
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
