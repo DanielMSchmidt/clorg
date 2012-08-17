@@ -1,20 +1,16 @@
 = div_for(message, class: "well messagebox") do
-  .author
-    %p
-      Author:
+  .metainfo.row-fluid
+    %p.span9
       = message.user.name
+      = message.created_at.strftime("%H:%M %e.%m.%Y")
     - if can_delete?(message)
-      #control.btn-group.pull-right
-        = link_to 'Edit', edit_message_path(message), class: "btn btn-primary"
-        = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete, class: "btn btn-primary"
+      #control.span3
+        .btn-group.pull-right
+          = link_to 'Edit', edit_message_path(message), class: "btn btn-primary"
+          = link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete, class: "btn btn-primary"
   .content
     %p
-      Content:
       = message.content
-  .metainfo
-    %p
-      Created time:
-      = message.created_at.strftime("%H:%M %e.%m.%Y")
 
   .comments.well.commentsbox
     - comments_for(message).each do |comment|
