@@ -3,10 +3,12 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
-
+gem 'thin' #more solid webserver
+gem 'foreman'
 
 group :production, :staging do
   gem "pg" #Postgres DB to deploy into heroku
+
 end
 
 group :development do
