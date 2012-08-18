@@ -5,9 +5,9 @@ gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 gem 'thin' #more solid webserver
 gem 'foreman'
-
+gem "pg" #Postgres DB to deploy into heroku
 group :production, :staging do
-  gem "pg" #Postgres DB to deploy into heroku
+  
 
 end
 
