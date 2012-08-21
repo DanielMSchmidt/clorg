@@ -3,6 +3,7 @@ Clorg::Application.routes.draw do
   resources :events
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match '/calendar/week/(:year(/:weeknumber))' => 'calendar#show', as: :week_calendar
 
   resources :tags
 

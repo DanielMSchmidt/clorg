@@ -1,0 +1,9 @@
+%h1 Weekly Calendar
+=@year
+=@weeknr
+= calendar_for(@events) do |t| 
+  = t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun')
+  = t.day do |day, tasks|
+    = day.day
+    = tasks.each do |task| 
+      = h(event.name)
