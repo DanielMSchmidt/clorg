@@ -6,7 +6,6 @@ gem 'will_paginate', '~> 3.0'
 gem 'haml'
 gem 'simple_form'
 gem 'event-calendar', :require => 'event_calendar'
-gem "watu_table_builder", :require => "table_builder", :git => "git://github.com/watu/table_builder.git"
 
 group :production, :staging do
   gem "pg" #Postgres DB to deploy into heroku
