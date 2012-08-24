@@ -14,7 +14,8 @@ class CalendarController < ApplicationController
   	@weeknr = (params[:weeknumber] || (Time.zone || Time).now.strftime("%W")).to_i
 	  monday =  Date.commercial(@year, @weeknr, 1)
 	  friday =  Date.commercial(@year, @weeknr, 7)
-  	@events = Event.where(:start_at => monday..friday)
+    @events = Event.all
+  	#@events = Event.where(:start_at => monday..friday)
   end
   
 end
