@@ -1,9 +1,16 @@
 %h1 Weekly Calendar
 =@year
 =@weeknr
-= calendar_for(@events) do |t| 
-  = t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun')
-  = t.day do |day, tasks|
-    = day.day
-    = tasks.each do |task| 
-      = h(event.name)
+#weekcalendar.ec-calendar
+  .day#day-0
+    .weekday
+      Uhrzeit
+    -(12..47).each do |hhour|
+      .half-hour{:id => "half-hour-#{hhour}"}
+        = Time.at((23*60 + 30 * hhour )*60).strftime("%H:%M")
+  -(1..7).each do |day|
+    .day{:id => "day-#{day}", :onclick => "alert(#{day}); //for redirects on new_event() page with day already set"}
+      .weekday
+        =Time.at(((24*(3+day))-1)*60*60).strftime("%A")
+
+      =render @events, :day => day
