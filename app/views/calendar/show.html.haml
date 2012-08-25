@@ -1,16 +1,10 @@
 %h1 Weekly Calendar
 =@year
 =@weeknr
-#weekcalendar.ec-calendar
-  .day#day-0
-    .weekday
-      Uhrzeit
-    -(12..47).each do |hhour|
-      .half-hour{:id => "half-hour-#{hhour}"}
-        = Time.at((23*60 + 30 * hhour )*60).strftime("%H:%M")
+#weekcalendar.calendar
+  =render 'week_calendar_hours'
   -(1..7).each do |day|
     .day{:id => "day-#{day}", :onclick => "window.location = '#{new_event_path(:start_at => (Date.commercial(@year, @weeknr, day).to_time + 8.hours), :end_at => (Date.commercial(@year, @weeknr, day).to_time + 15.hours))}'"}
       .weekday
         =Time.at(((24*(3+day))-1)*60*60).strftime("%A")
-
       =render @events, :day => day

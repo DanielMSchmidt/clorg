@@ -1,0 +1,48 @@
+$daywidth: 120px
+//navigation
+.navigation
+  display: block
+  height: 30px
+  margin-left: 2.5%
+  margin-bottom: 20px
+  width: 95%
+
+  .prev
+    float: left
+  .next
+    float: right  
+#monthcalendar
+  .day
+    -moz-border-radius: 9px
+    -webkit-border-radius: 9px
+    border-radius: 9px
+    border: 1px solid grey
+    float: left
+    margin: 7px
+    overflow: hidden
+    padding: 5px
+    height: $daywidth
+    width: $daywidth
+    .caption
+      border-bottom: solid 1px
+      text-align: center
+  
+      
+  .dayname
+    border: none
+    float: left
+    text-align: center
+    height: 20px
+    margin: 0 0 10px 0
+    width: $daywidth
+  
+  #dayname-0
+    margin-left: 10px
+  #dayname-1
+    margin-left: 28px
+  #dayname-2
+    margin-left: 23px
+  #dayname-3, #dayname-4, #dayname-6
+    margin-left: 25px
+  #dayname-5
+    margin-left: 30px 

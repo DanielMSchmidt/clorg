@@ -1,1 +1,18 @@
 %h1 Monthly Calendar
+.navigation
+  .prev
+    =month_link(@shown_month - 1.month)
+  .next
+    =month_link(@shown_month + 1.month)
+#monthcalendar.calendar
+  .daynames
+    -(1..6).each do |day|
+      .dayname{id: "dayname-#{day-1}"}
+        =Date::DAYNAMES[day]
+    .dayname{id: "dayname-6"}
+      =Date::DAYNAMES[0]
+  -(@shown_month.monday .. last_sunday(@shown_month)).each do |day|
+    .day{:id => "day-#{day}"}
+      .caption
+        =day.day
+      .events
