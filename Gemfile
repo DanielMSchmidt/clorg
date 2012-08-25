@@ -5,7 +5,6 @@ gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 gem 'haml'
 gem 'simple_form'
-gem 'event-calendar', :require => 'event_calendar'
 
 group :production, :staging do
   gem "pg" #Postgres DB to deploy into heroku
