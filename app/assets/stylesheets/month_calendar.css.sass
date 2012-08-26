@@ -1,4 +1,7 @@
+$active_color: rgba(82,  201,  83,  0.3)
+$inactive_color: rgba(153, 153, 153, 0.3)
 $daywidth: 120px
+
 //navigation
 .navigation
   display: block
@@ -13,6 +16,7 @@ $daywidth: 120px
     float: right  
 #monthcalendar
   .day
+    background-color: $inactive_color
     -moz-border-radius: 9px
     -webkit-border-radius: 9px
     border-radius: 9px
@@ -26,8 +30,11 @@ $daywidth: 120px
     .caption
       border-bottom: solid 1px
       text-align: center
+    &.active
+      background-color: $active_color
+      .events
+        opacity: 1
   
-      
   .dayname
     border: none
     float: left
@@ -46,3 +53,20 @@ $daywidth: 120px
     margin-left: 25px
   #dayname-5
     margin-left: 30px 
+
+
+  //Eventhandling
+  .events
+    cursor: pointer
+    margin: 7px
+    overflow: hidden
+    opacity: 0.3
+    
+    .event
+      -webkit-border-radius: 10px
+      border-radius: 10px
+      background-color: #0011ff
+      color: #ff0000
+      margin-bottom: 8px
+      text-align: center
+      overflow: hidden
