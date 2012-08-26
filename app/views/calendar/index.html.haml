@@ -12,7 +12,8 @@
     .dayname{id: "dayname-6"}
       =Date::DAYNAMES[0]
   -(@shown_month.monday .. last_sunday(@shown_month)).each do |day|
-    .day{:id => "day-#{day}"}
+    .day{:id => "day-#{day.day}", :class => "month-#{day.month}", :class => "#{'active' if (day.month == @shown_month.month)}"}
       .caption
         =day.day
       .events
+        =render @events, :day => day
