@@ -7,5 +7,4 @@ class Event < ActiveRecord::Base
   validates :name, :start_at, :end_at, :color, :tag_id, :user_id, presence: true
   validates :color, :hex_color => true
 
-  has_event_calendar
 end
