@@ -4,6 +4,7 @@ class CalendarController < ApplicationController
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
+    @events = Event.all
   end
 
   def show
