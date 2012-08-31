@@ -2,6 +2,8 @@
 .navigation
   .prev
     =month_link(@shown_month - 1.month)
+  .switch
+    %a{:href => week_calendar_path} Weekly Calendar
   .next
     =month_link(@shown_month + 1.month)
 #monthcalendar.calendar
@@ -12,7 +14,7 @@
     .dayname{id: "dayname-6"}
       =Date::DAYNAMES[0]
   -(@start .. @ending).each do |day|
-    .day{:id => "day-#{day.day}", :class => "month-#{day.month}", :class => "#{'active' if (day.month == @shown_month.month)}"}
+    .day{:id => "day-#{day.day}", :class => "month-#{day.month} #{'active' if (day.month == @shown_month.month)}", :ondblclick => "#{new_event(day)}"}
       .caption
         =day.day
       .events

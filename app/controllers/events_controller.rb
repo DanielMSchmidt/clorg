@@ -9,7 +9,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = Event.new()
+    if !params[:start_at].nil?
+      @event.start_at = params[:start_at].to_time + 8.hours
+      @event.end_at = params[:start_at].to_time + 12.hours  
+    end
+    
   end
 
   def edit

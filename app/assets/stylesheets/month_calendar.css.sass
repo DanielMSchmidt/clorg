@@ -13,7 +13,10 @@ $daywidth: 120px
   .prev
     float: left
   .next
-    float: right  
+    float: right
+  .switch
+    position: absolute
+    left: 35%
 #monthcalendar
   .day
     background-color: $inactive_color
@@ -21,6 +24,7 @@ $daywidth: 120px
     -webkit-border-radius: 9px
     border-radius: 9px
     border: 1px solid grey
+    cursor: pointer
     float: left
     margin: 7px
     overflow: hidden

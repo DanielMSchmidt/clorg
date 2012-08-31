@@ -1,8 +1,15 @@
 %h1 Weekly Calendar
+.navigation
+  .prev
+    =previous_week(Date.commercial(@year,@weeknr, 1))
+  .switch
+    %a{:href => calendar_path} Monthly Calendar
+  .next
+    =next_week(Date.commercial(@year,@weeknr, 1))
 #weekcalendar.calendar
   =render 'week_calendar_hours'
-  -(1..7).each do |day|
-    .day{:id => "day-#{day}", :onclick => "window.location = '#{new_event_path}'"}
+  -(1..7).each do |day| 
+    .day{:id => "day-#{day}", :ondblclick => "#{new_event(Date.commercial(@year,@weeknr, day))}"}
       .weekday
         =Time.at(((24*(3+day))-1)*60*60).strftime("%A")
       - a = Date.commercial(@year,@weeknr, day).to_time
