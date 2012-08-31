@@ -1,0 +1,21 @@
+%h1 Monthly Calendar
+.navigation
+  .prev
+    =month_link(@shown_month - 1.month)
+  .switch
+    %a{:href => week_calendar_path} Weekly Calendar
+  .next
+    =month_link(@shown_month + 1.month)
+#monthcalendar.calendar
+  .daynames
+    -(1..6).each do |day|
+      .dayname{id: "dayname-#{day-1}"}
+        =Date::DAYNAMES[day]
+    .dayname{id: "dayname-6"}
+      =Date::DAYNAMES[0]
+  -(@start .. @ending).each do |day|
+    .day{:id => "day-#{day.day}", :class => "month-#{day.month} #{'active' if (day.month == @shown_month.month)}", :ondblclick => "#{new_event(day)}"}
+      .caption
+        =day.day
+      .events
+        =render @events, :day => day.to_time .. day.to_time.end_of_day

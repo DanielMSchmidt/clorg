@@ -1,0 +1,76 @@
+$active_color: rgba(82,  201,  83,  0.3)
+$inactive_color: rgba(153, 153, 153, 0.3)
+$daywidth: 120px
+
+//navigation
+.navigation
+  display: block
+  height: 30px
+  margin-left: 2.5%
+  margin-bottom: 20px
+  width: 95%
+
+  .prev
+    float: left
+  .next
+    float: right
+  .switch
+    position: absolute
+    left: 35%
+#monthcalendar
+  .day
+    background-color: $inactive_color
+    -moz-border-radius: 9px
+    -webkit-border-radius: 9px
+    border-radius: 9px
+    border: 1px solid grey
+    cursor: pointer
+    float: left
+    margin: 7px
+    overflow: hidden
+    padding: 5px
+    height: $daywidth
+    width: $daywidth
+    .caption
+      border-bottom: solid 1px
+      text-align: center
+    &.active
+      background-color: $active_color
+      .events
+        opacity: 1
+  
+  .dayname
+    border: none
+    float: left
+    text-align: center
+    height: 20px
+    margin: 0 0 10px 0
+    width: $daywidth
+  
+  #dayname-0
+    margin-left: 10px
+  #dayname-1
+    margin-left: 28px
+  #dayname-2
+    margin-left: 23px
+  #dayname-3, #dayname-4, #dayname-6
+    margin-left: 25px
+  #dayname-5
+    margin-left: 30px 
+
+
+  //Eventhandling
+  .events
+    cursor: pointer
+    margin: 7px
+    overflow: hidden
+    opacity: 0.3
+    
+    .event
+      -webkit-border-radius: 10px
+      border-radius: 10px
+      background-color: #0011ff
+      color: #ff0000
+      margin-bottom: 8px
+      text-align: center
+      overflow: hidden

@@ -1,0 +1,5 @@
+- if day.cover?(event.start_at)
+  -if day.cover?(event.end_at)
+    .event{:onclick => "window.location = '#{event_path(event)}'", :class => "start-#{(event.start_at.hour - 6) * 2 + (event.start_at.min/ 60).round} duration-#{event.end_at.hour - event.start_at.hour}"}
+      =short_name("Testevent1234567890")
+      =day

@@ -1,0 +1,6 @@
+.day#day-0
+  .weekday
+    Uhrzeit
+  -(12..47).each do |hhour|
+    .half-hour{:id => "half-hour-#{hhour}"}
+      = Time.at((23*60 + 30 * hhour )*60).strftime("%H:%M")

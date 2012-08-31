@@ -17,12 +17,12 @@
       %i.icon-envelope
       Messages
     <li
-    - if controller.controller_name == "calender"
+    - if controller.controller_name == "calendar"
       class="active"
     >
-    %a{:href => "#"}
+    %a{:href => calendar_path}
       %i.icon-book
-      Calender
+      Calendar
     <li
     - if controller.controller_name == "users" && controller.action_name == "edit"
       class="active"
