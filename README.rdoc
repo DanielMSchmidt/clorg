@@ -1,63 +1,16 @@
-Versions:
+#Versions:
   - v0.01: (12.04.12) Static pages, thats it
   - v0.02: (21.05.12) Basic user functions and restricted sites
   - v0.1: (27.07.12) Basic functions of messageboard (without filters, but with comments )
   - v0.101: (29.07.12) Comments are now on same Site as messages
-
-Getting started with development:
-  - install Ruby On Rails
-  - clone the repsitory
-  - install git flow
-  - use the command git flow init
-  - press enter all the time
-  - git pull
-  - rails generate rspec:install
-
-Getting started with Ubuntu:
-  How to install ruby on rails on ubuntu
-
-   ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
-   ~$ sudo gem install rails
-
-
-How to start:
-  - Add to this File at "Features in Development" your feature
-  - Use git flow feature start YOUR_FEATURE to start a new feature (should not be a longer one then one week)
-  - develop your feature
-  - Use git flow feature finish YOUR_FEATURE
-
-Getting started with Ubuntu:
-
-How to install ruby on rails on ubuntu
-  ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
-  ~$ sudo gem install rails
-
-for Git:
-  ~$ sudo apt-get install -y git-core git-gui git-doc
-How to configure git:
-  http://help.github.com/linux-set-up-git/
-
-Git-flow could be downloaded on Launchpad:
-  https://launchpad.net/ubuntu/+archive/primary/+files/git-flow_0.4.1-2_all.deb
-
-Features Developed:
-  - simple static Pages with named routes
-  - User signup
-  - Login System, Signin and out, updating Users, Site Restrictions
-  - admin (only delete so far)
-  - Messageboard core features
-
-Features in Development:
-  - Design & Frontend (David)
-  - Testing (Linus)
-  - Messageboard, alles auf einer Seite, ohne Unterseiten (Daniel)
   
+#Features Developed:
+  - simple static Pages with named routes
+  - Complete User signup
+  - Messageboard on one site, selecting tags via ajax
+  - Simple calendar with events and week/month view
 
-Features to be Developed:
-  - essential features for users (deactivate themselfes) (Daniel)
-
-Please add your feature name afterwards
-
-  feature/messageboard (Malte)
-  feature/messageboard-oneSite (Daniel)
+#Features in Development:
+  - Deployment via Capistrano (David)
+  - Eventinterface and Colors (Daniel) []
 
