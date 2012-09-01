@@ -13,5 +13,5 @@
 
 ##Features in Development:
   - Deployment via Capistrano (David)
-  - Eventinterface and Colors (Daniel) []
+  - Eventinterface and Colors (Daniel)
 
