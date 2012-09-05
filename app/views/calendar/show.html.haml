@@ -6,6 +6,9 @@
     %a{:href => calendar_path} Monthly Calendar
   .next
     =next_week(Date.commercial(@year,@weeknr, 1))
+.tags
+  = render 'layouts/tagbar'
+
 #weekcalendar.calendar
   =render 'week_calendar_hours'
   -(1..7).each do |day| 
