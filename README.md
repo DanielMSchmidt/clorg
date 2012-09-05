@@ -1,4 +1,5 @@
 #Clorg - The Club Organizer
+[![Code Quality](https://codeclimate.com/badge.png)](https://codeclimate.com/github/DanielMSchmidt/clorg)
 ##Versions:
   - 0.01: (12.04.12) Static pages, thats it
   - 0.02: (21.05.12) Basic user functions and restricted sites
