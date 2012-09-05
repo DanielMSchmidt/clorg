@@ -2,17 +2,27 @@ class CalendarController < ApplicationController
   before_filter :get_tags
   before_filter :set_globals
   # TODO: Presenter maybe?
+  # TODO: Helpermethod!
 
   def index
+    @tag = Tag.find(params[:id])
     @start = @shown_month.monday
     @ending = last_sunday(@start)
-    @events = Event.where( start_at: @start..@ending)
+    if @tag.nil?
+      @events = Event.where( start_at: @start..@ending)  
+    else
+      @events = Event.where( start_at: @start..@ending, tag_id: @tag.id)
+    end    
   end
 
   def show
 	  monday =  Date.commercial(@year, @weeknr, 1)
 	  friday =  Date.commercial(@year, @weeknr, 7)
-  	@events = Event.where(start_at: monday..friday)
+    if @tag.nil?
+  	  @events = Event.where(start_at: monday..friday)
+    else
+      @events = Event.where( start_at: monday..friday, tag_id: @tag.id)
+    end
   end
 
   def get_tags
