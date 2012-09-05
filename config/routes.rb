@@ -1,24 +1,24 @@
 Clorg::Application.routes.draw do
 
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
   resources :events
-
-  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match '/calendar/week/(:year(/:weeknumber))' => 'calendar#show', as: :week_calendar, :constraints => {:year => /\d{4}/, :weeknumber => /\d{1,2}/}
-
   resources :tags
-
   resources :messages do
     resources :comments
   end
 
-  resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
+  #routes for filtering via tags
+  match '/tag/:id/messages' => 'messages#filtered_index', as: :filtered_messages
+  match '/tag/:id/calendar(/:year(/:month))' => 'calendar#index', :as => :filtered_calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match '/tag/:id/calendar/week/(:year(/:weeknumber))' => 'calendar#show', as: :filtered_week_calendar, :constraints => {:year => /\d{4}/, :weeknumber => /\d{1,2}/}
 
-
+  #"seo" - Routes
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match '/calendar/week/(:year(/:weeknumber))' => 'calendar#show', as: :week_calendar, :constraints => {:year => /\d{4}/, :weeknumber => /\d{1,2}/}
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
   match '/messages' => redirect('/board')
