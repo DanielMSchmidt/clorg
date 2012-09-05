@@ -12,6 +12,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  def filtered_index
+    @tag = Tag.find(params[:id])
+    @messages = @tag.messages unless @tag.nil?
+  end
+
   def show
     @comments = @message.comments
   end
