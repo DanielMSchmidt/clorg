@@ -1,7 +1,7 @@
 - if !@tags.nil?
-	.btn-group.radio
-	  #all.tag.btn.btn-primary.active
-	    = link_to "All", messages_path, remote: true
-	  - @tags.each do |t|
-	    = div_for(t, class: "btn btn-primary") do
-	      = link_to t.name, t, remote: true
+  .btn-group.radio
+    #all.tag.btn.btn-primary.active
+      = link_to "All", messages_path, remote: true
+    - @tags.each do |t|
+      = div_for(t, class: "btn btn-primary") do
+        = link_to t.name, filtered_messages_path(t), remote: true
