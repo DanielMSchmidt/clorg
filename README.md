@@ -1,5 +1,5 @@
 #Clorg - The Club Organizer
-[![Dependency Status](https://gemnasium.com/jnicklas/capybara.png)](https://gemnasium.com/jnicklas/DanielMSchmidt/clorg)
+[![Dependency Status](https://gemnasium.com/DanielMSchmidt/clorg.png)](https://gemnasium.com/DanielMSchmidt/clorg)
 [![Code Quality](https://codeclimate.com/badge.png)](https://codeclimate.com/github/DanielMSchmidt/clorg)
 ##Versions:
   - 0.01: (12.04.12) Static pages, thats it
