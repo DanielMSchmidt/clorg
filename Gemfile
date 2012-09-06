@@ -10,6 +10,15 @@ group :production, :staging do
   gem "pg" #Postgres DB to deploy into heroku
 end
 
+group :test, :development do
+  gem "yard"
+  gem "redcarpet"   # for yard to process .md files
+  gem "rails_best_practices"
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
+  gem "ci_reporter", require: false
+end
+
 group :development do
   gem 'sqlite3'
   gem 'sqlite3-ruby', '>= 1.3.1', :require => 'sqlite3'
@@ -19,6 +28,7 @@ group :development do
       :branch => 'rake_compatibility'
   gem 'faker'
   gem 'bullet'
+  gem 'brakeman'
 end
 
 group :test do

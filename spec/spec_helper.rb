@@ -1,3 +1,16 @@
+#For Jenkins CI integration according to https://github.com/pludoni/railsTemplate
+unless ENV['DRB']
+  require 'simplecov'
+  require 'simplecov-rcov'
+  class SimpleCov::Formatter::MergedFormatter
+    def format(result)
+      SimpleCov::Formatter::HTMLFormatter.new.format(result)
+      SimpleCov::Formatter::RcovFormatter.new.format(result)
+    end
+  end
+  SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -24,6 +37,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  config.tty = true  # enable color for rspec
 
   def test_sign_in(user)
     controller.sign_in(user)
