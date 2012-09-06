@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   def show
   end
 
-  def new    
+  def new
   end
 
   def edit
@@ -23,15 +23,16 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @message, notice: 'Comment was successfully created.'
     else
-      render action: "new" 
+      render action: "new"
     end
   end
 
   def update
+    @comment.user_id = current_user.id
     if @comment.update_attributes(params[:comment])
       redirect_to [@message, @comment], notice: 'Comment was successfully updated.'
     else
-      render action: "edit" 
+      render action: "edit"
     end
   end
 
