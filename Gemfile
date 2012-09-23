@@ -21,7 +21,6 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'sqlite3-ruby', '>= 1.3.1', :require => 'sqlite3'
   gem 'rspec-rails'
   gem 'annotate',
       :git => 'git://github.com/jeremyolliver/annotate_models.git',
