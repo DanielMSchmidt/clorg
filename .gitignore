@@ -17,3 +17,4 @@ Gemfile.lock
 bin/
 Vagrantfile
 .vagrant
+config/database.yml
