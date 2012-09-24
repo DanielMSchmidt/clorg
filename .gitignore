@@ -15,3 +15,5 @@
 *.rb~
 Gemfile.lock
 bin/
+Vagrantfile
+.vagrant
