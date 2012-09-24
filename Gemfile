@@ -17,7 +17,7 @@ group :test, :development do
   gem "rails_best_practices"
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
-  gem "ci_reporter", require: false
+  gem "ci_reporter", :require => false
 end
 
 group :development do
