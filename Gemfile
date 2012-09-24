@@ -8,7 +8,7 @@ gem 'simple_form'
 gem 'therubyracer'
 
 group :production, :staging do
-  gem "pg" #Postgres DB to deploy into heroku
+  gem 'mysql2'
 end
 
 group :test, :development do
