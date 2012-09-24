@@ -14,9 +14,9 @@
   - Complete User signup
   - Messageboard on one site, selecting tags via ajax
   - Simple calendar with events and week/month view
+  - Simple Server Setup using vagrant, nginx, unicorn and capistrano for deployment
 
 ##Features in Development:
-  - Deployment via Capistrano (David)
   - Eventinterface and Colors (Daniel)
 
 ##Todo:
