@@ -5,6 +5,7 @@ gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 gem 'haml'
 gem 'simple_form'
+gem 'therubyracer'
 
 group :production, :staging do
   gem "pg" #Postgres DB to deploy into heroku
@@ -53,7 +54,7 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
