@@ -12,5 +12,6 @@
     .day{:id => "day-#{day}", :ondblclick => "#{new_event(Date.commercial(@year,@weeknr, day))}"}
       .weekday
         =Time.at(((24*(3+day))-1)*60*60).strftime("%A")
-      - a = Date.commercial(@year,@weeknr, day).to_time
-      =render @events, :day => a..a.end_of_day
+      - whole_day = get_whole_day(Date.commercial(@year,@weeknr, day))
+      - @events.each do |event|
+        =render event, :day => whole_day if is_at_day(whole_day, event)

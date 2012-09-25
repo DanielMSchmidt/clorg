@@ -18,4 +18,6 @@
       .caption
         =day.day
       .events
-        =render @events, :day => day.to_time .. day.to_time.end_of_day
+        - whole_day = get_whole_day(day)
+        - @events.each do |event|
+          =render event, :day => whole_day if is_at_day(whole_day, event)
