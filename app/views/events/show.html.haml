@@ -16,7 +16,7 @@
   = @event.tag_id
 %p
   %b User:
-  = @event.user_id
+  = render "users/user_portrait", user: @event.user
 = link_to 'Edit', edit_event_path(@event)
 |
 \#{link_to 'Back', events_path}
