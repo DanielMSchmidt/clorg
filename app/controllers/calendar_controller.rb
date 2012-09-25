@@ -8,7 +8,7 @@ class CalendarController < ApplicationController
     #getting right events
     @start = @shown_month.monday
     @ending = last_sunday(@start)
-    @events = Event.where( start_at: @start..@ending)
+    @events = Event.within(@start, @ending)
   end
 
   def show
@@ -16,7 +16,7 @@ class CalendarController < ApplicationController
   	@weeknr = (params[:weeknumber] || (Time.zone || Time).now.strftime("%W")).to_i
 	  monday =  Date.commercial(@year, @weeknr, 1)
 	  friday =  Date.commercial(@year, @weeknr, 7)
-  	@events = Event.where(:start_at => monday..friday)
+    @events = Event.within(monday, friday)
   end
   
   protected

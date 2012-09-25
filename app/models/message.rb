@@ -6,7 +6,5 @@ class Message < ActiveRecord::Base
   belongs_to :user, :foreign_key => :user_id
   has_one :tag, :foreign_key => :tag_id
 
-  validates :content, :presence => true
-  validates :user_id, :presence => true
-
+  validates :content, :user_id, :presence => true
 end
