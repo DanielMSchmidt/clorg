@@ -1,6 +1,8 @@
 class CalendarController < ApplicationController
   
+  #FIXME Consider Presenter!
   def index
+    @tags = Tag.all
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
@@ -12,6 +14,7 @@ class CalendarController < ApplicationController
   end
 
   def show
+    @tags = Tag.all
   	@year = (params[:year] || (Time.zone || Time).now.year).to_i
   	@weeknr = (params[:weeknumber] || (Time.zone || Time).now.strftime("%W")).to_i
 	  monday =  Date.commercial(@year, @weeknr, 1)

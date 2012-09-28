@@ -9,7 +9,10 @@ class TagsController < ApplicationController
   # GET /tags/1.js
   def show
     @tag = Tag.find(params[:id])
-    @messages = @tag.messages unless @tag.nil?
+    unless @tag.nil? do
+      @messages = @tag.messages 
+      @events = @tag.events
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.js #show.js.erb

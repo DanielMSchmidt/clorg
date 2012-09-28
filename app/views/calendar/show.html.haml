@@ -1,4 +1,6 @@
 %h1 Weekly Calendar
+.tagbar
+  = render 'layouts/tagbar'
 .navigation
   .prev
     =previous_week(Date.commercial(@year,@weeknr, 1))
