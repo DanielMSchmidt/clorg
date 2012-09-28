@@ -6,8 +6,7 @@
       = render @messages
   .span1
   .span3
-    - if !@tags.nil?
-      = render 'layouts/tagbar'
+    = render 'layouts/tagbar'
     %br
     %h3 Write a Message
     = render 'form'

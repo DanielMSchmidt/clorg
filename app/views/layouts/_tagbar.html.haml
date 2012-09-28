@@ -1,6 +1,15 @@
-.btn-group.radio
-  #all.tag.btn.btn-primary.active
-    = link_to "All", messages_path, remote: true
-  - @tags.each do |t|
-    = div_for(t, class: "btn btn-primary") do
-      = link_to t.name, t, remote: true
+- if !@tags.nil?
+  .btn-group.radio
+    - if controller.controller_name == "messages"
+      #all.tag.btn.btn-primary.active
+        = link_to "All", messages_path, remote: true
+      - @tags.each do |t|
+        = div_for(t, class: "btn btn-primary") do
+          = link_to t.name, messages_tagged_by_path(t.id), remote: true
+
+    - if controller.controller_name == "calendar"
+      #all.tag.btn.btn-primary.active
+        = link_to "All", calendar_path, remote: true
+      - @tags.each do |t|
+        = div_for(t, class: "btn btn-primary") do
+          = link_to t.name, events_tagged_by_path(t.id), remote: true
