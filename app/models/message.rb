@@ -1,5 +1,7 @@
 class Message < ActiveRecord::Base
-  attr_accessible :content, :user_id, :tag_id
+  attr_accessible :content, :user_id, :tag_list
+  acts_as_taggable
+
   default_scope :order => 'created_at DESC'
 
   has_many :comments
