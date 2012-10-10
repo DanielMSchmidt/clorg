@@ -1,5 +1,7 @@
 %h1 Latest Messages
 %br
+= will_paginate @messages, previous_label: h("<"), next_label: h(">"), inner_window: 1, outer_window: 0
+
 .row-fluid
   .span8
     #messages
