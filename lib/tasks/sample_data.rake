@@ -5,8 +5,8 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
 
-    Tag.create!(:name => "a Tag", :color => "#fff000")
-    Tag.create!(:name => "another Tag", :color =>"#f00f00")
+    Tag.create!(:name => "a Tag")
+    Tag.create!(:name => "another Tag")
 
     admin = User.create!(
                   :name => "Example User",
