@@ -1,5 +1,5 @@
 class CalendarController < ApplicationController
-  
+
   #FIXME Consider Presenter!
   def index
     @tags = Tag.all
@@ -10,7 +10,13 @@ class CalendarController < ApplicationController
     #getting right events
     @start = @shown_month.monday
     @ending = last_sunday(@start)
-    @events = Event.within(@start, @ending)
+
+    @activeTag = params[:tag]
+    if @activeTag
+      @events = Event.tagged_with(@activeTag).within(@start, @ending)
+    else
+      @events = Event.within(@start, @ending)
+    end
   end
 
   def show
@@ -19,9 +25,15 @@ class CalendarController < ApplicationController
   	@weeknr = (params[:weeknumber] || (Time.zone || Time).now.strftime("%W")).to_i
 	  monday =  Date.commercial(@year, @weeknr, 1)
 	  friday =  Date.commercial(@year, @weeknr, 7)
-    @events = Event.within(monday, friday)
+
+    @activeTag = params[:tag]
+    if @activeTag
+      @events = Event.tagged_with(@activeTag).within(monday, friday)
+    else
+      @events = Event.within(monday, friday)
+    end
   end
-  
+
   protected
   def last_sunday(start_date)
     date = start_date + 1.month - 1.day

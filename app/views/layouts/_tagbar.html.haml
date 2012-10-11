@@ -12,9 +12,16 @@
         .btn{:id => "#{t.name}", class: "btn-primary"}
           = link_to t.name, messages_tagged_by_path(t.name)
 
-    - if controller.controller_name == "calendar"
+    - if controller.controller_name == "calendar" && controller.action_name == "index"
       #All.tag.btn.btn-primary
         = link_to "All", calendar_path
       - @tags.each do |t|
         .btn{:id => "#{t.name}", class: "btn-primary"}
-          = link_to t.name, events_tagged_by_path(t.name)
+          = link_to t.name, calendar_tagged_by_path(t.name)
+
+    - if controller.controller_name == "calendar" && controller.action_name == "show"
+      #All.tag.btn.btn-primary
+        = link_to "All", week_calendar_path
+      - @tags.each do |t|
+        .btn{:id => "#{t.name}", class: "btn-primary"}
+          = link_to t.name, week_calendar_tagged_by_path(t.name)
