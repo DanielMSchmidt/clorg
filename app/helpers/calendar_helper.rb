@@ -4,7 +4,7 @@ module CalendarHelper
       link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year})
     else
       link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year, :tag => tag})
-    end    
+    end
   end
 
   def previous_week(week_date, tag=nil)
@@ -13,7 +13,7 @@ module CalendarHelper
       link_to(I18n.localize(date, :format => "Woche %W"), {:weeknr => date.cweek, :year => date.cwyear})
     else
       link_to(I18n.localize(date, :format => "Woche %W"), {:weeknr => date.cweek, :year => date.cwyear, :tag => tag})
-    end  	
+    end	
   end
 
   def next_week(week_date, tag=nil)
