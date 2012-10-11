@@ -6,7 +6,6 @@ class Message < ActiveRecord::Base
 
   has_many :comments
   belongs_to :user, :foreign_key => :user_id
-  has_one :tag, :foreign_key => :tag_id
 
   validates :content, :user_id, :presence => true
 end

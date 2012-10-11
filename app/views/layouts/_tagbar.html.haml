@@ -1,15 +1,20 @@
-- if !@tags.nil?
+-if @activeTag.nil?
+  =hidden_field_tag 'activeTag', 'All'
+-else
+  =hidden_field_tag 'activeTag', @activeTag
+
+- unless @tags.nil?
   .btn-group.radio
     - if controller.controller_name == "messages"
-      #all.tag.btn.btn-primary.active
-        = link_to "All", messages_path, remote: true
+      #All.tag.btn.btn-primary
+        = link_to "All", messages_path
       - @tags.each do |t|
-        = div_for(t, class: "btn btn-primary") do
-          = link_to t.name, messages_tagged_by_path(t.id), remote: true
+        .btn{:id => "#{t.name}", class: "btn-primary"}
+          = link_to t.name, messages_tagged_by_path(t.name)
 
     - if controller.controller_name == "calendar"
-      #all.tag.btn.btn-primary.active
-        = link_to "All", calendar_path, remote: true
+      #All.tag.btn.btn-primary
+        = link_to "All", calendar_path
       - @tags.each do |t|
-        = div_for(t, class: "btn btn-primary") do
-          = link_to t.name, events_tagged_by_path(t.id), remote: true
+        .btn{:id => "#{t.name}", class: "btn-primary"}
+          = link_to t.name, events_tagged_by_path(t.name)
