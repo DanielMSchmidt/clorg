@@ -1,5 +1,6 @@
 require 'digest'
 class User < ActiveRecord::Base
+  authenticates_with_sorcery!
   attr_accessor :password
   attr_accessible :email, :name, :password, :password_confirmation, :phone, :street, :zip, :location
 

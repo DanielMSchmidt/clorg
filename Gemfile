@@ -6,6 +6,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'haml'
 gem 'simple_form'
 gem 'acts-as-taggable-on'
+gem 'sorcery'
 
 group :production, :staging do
   gem 'mysql2'
