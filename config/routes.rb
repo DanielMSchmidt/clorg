@@ -6,8 +6,7 @@ Clorg::Application.routes.draw do
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   match '/calendar/week/(:year(/:weeknumber))' => 'calendar#show', :as => :week_calendar, :constraints => {:year => /\d{4}/, :weeknumber => /\d{1,2}/}
 
-  match '/calendar/tag/:tag(/:year(/:month))' => 'calendar#index', :as => :calendar_tagged_by, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match '/calendar/week/tag/:tag(:year(/:weeknumber))' => 'calendar#show', :as => :week_calendar_tagged_by, :constraints => {:year => /\d{4}/, :weeknumber => /\d{1,2}/}
+  
   resources :messages do
     resources :comments
   end

@@ -3,11 +3,11 @@
   = render 'layouts/tagbar'
 .navigation
   .prev
-    =previous_week(Date.commercial(@year,@weeknr, 1))
+    =previous_week(Date.commercial(@year,@weeknr, 1), @activeTag)
   .switch
     %a{:href => calendar_path} Monthly Calendar
   .next
-    =next_week(Date.commercial(@year,@weeknr, 1))
+    =next_week(Date.commercial(@year,@weeknr, 1), @activeTag)
 #weekcalendar.calendar
   =render 'week_calendar_hours'
   -(1..7).each do |day| 
