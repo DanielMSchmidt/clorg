@@ -1,5 +1,6 @@
-$('#message_tag_id').val("");
-$('.radio .tag').removeClass('active');
-$('.radio #all').addClass('active');
-$('#messages .message').slideUp('slow').remove();
-$('#messages').append("<%= escape_javascript(render @messages) %>").hide().slideDown('slow');
+$('#messages').append('<%= j render(@messages) %>');
+<% if @messages.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@messages) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>

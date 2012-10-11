@@ -1,17 +1,18 @@
 Clorg::Application.routes.draw do
 
   resources :events
+  resources :tags
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   match '/calendar/week/(:year(/:weeknumber))' => 'calendar#show', :as => :week_calendar, :constraints => {:year => /\d{4}/, :weeknumber => /\d{1,2}/}
 
-  resources :tags
-  match '/events/tagged/:tag_id' => 'events#tagged', as: :events_tagged_by
-  match '/messages/tagged/:tag_id' => 'messages#tagged', as: :messages_tagged_by
-
+  
   resources :messages do
     resources :comments
   end
+
+  match '/messages', :to => 'messages#index'
+  match '/messages/tag/:tag', :to => 'messages#index', :as => :messages_tagged_by
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
@@ -23,8 +24,6 @@ Clorg::Application.routes.draw do
 
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
-  match '/messages' => redirect('/board')
-  match '/board', :to => 'messages#index'
 
   # for bootstrap icons
   match '/img/:name', :to => redirect('/assets/%{name}.png')

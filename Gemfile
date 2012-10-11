@@ -5,10 +5,11 @@ gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 gem 'haml'
 gem 'simple_form'
-gem 'therubyracer'
+gem 'acts-as-taggable-on'
 
 group :production, :staging do
   gem 'mysql2'
+  gem 'therubyracer'
 end
 
 group :test, :development do
