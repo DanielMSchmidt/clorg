@@ -1,5 +1,5 @@
-class AddAdressToUsers < ActiveRecord::Migration
-  def self.up
+class AddLocationToUser < ActiveRecord::Migration
+   def self.up
   	add_column :users, :phone, :string
   	add_column :users, :street, :string
   	add_column :users, :zip, :string
