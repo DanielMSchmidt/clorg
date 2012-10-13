@@ -14,7 +14,11 @@ Clorg::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+    # Change mail delvery to either :smtp, :sendmail, :file, :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => 1025 }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -35,13 +39,13 @@ Clorg::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  #Bullet gem added
-  config.after_initialize do
-  Bullet.enable = true
-  Bullet.alert = true
-  Bullet.bullet_logger = true
-  Bullet.console = true
-  Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
-end
+  #Bullet gem configurations
+    config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.disable_browser_cache = true
+  end
 end
