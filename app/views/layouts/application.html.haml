@@ -16,7 +16,7 @@
           .span10.well
             = yield
           / END CONTENT
-          - if signed_in?
+          - if logged_in?
             = render 'layouts/navigation_right'
         / 
         / FOOTER

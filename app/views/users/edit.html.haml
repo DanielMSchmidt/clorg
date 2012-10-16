@@ -1,4 +1,7 @@
 %h1 Edit user
-- if can_delete?(@user)
+- if @user == current_user
   = render 'fields', send: "Update"
   = render 'shared/bootstrap/button', name: "Delete yourself", to: @user, which_method: :delete, confirmation: "Do you really want to quit from clorg?", the_title: "Are you sure?"
+- else
+  .error
+    You aren't allowed to edit this user

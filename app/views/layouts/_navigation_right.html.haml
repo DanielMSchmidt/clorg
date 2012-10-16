@@ -27,8 +27,7 @@
     - if controller.controller_name == "users" && controller.action_name == "edit"
       class="active"
     >
-    %a{:href => edit_user_path(@current_user)}
-      / 
+    %a{:href => edit_user_path(current_user)}
       %i.icon-cog
       Settings
 / END NAVIGATION

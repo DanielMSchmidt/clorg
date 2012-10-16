@@ -1,7 +1,7 @@
 = div_for(message, class: "well messagebox") do
   .metainfo.row-fluid
     %p.span9
-      = message.user.name
+      = message.user.username
       = message.created_at.strftime("%H:%M %e.%m.%Y")
     - if can_delete?(message)
       #control.span3

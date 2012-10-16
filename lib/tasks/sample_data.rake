@@ -9,32 +9,32 @@ namespace :db do
     Tag.create!(:name => "Boxen")
 
     admin = User.create!(
-                  :name => "Example User",
+                  :username => "Example User",
                   :email => "example@user.de",
                   :password => "foobar",
                   :password_confirmation => "foobar"
     )
     admin.toggle!(:admin)
+    admin.activate!
     99.times do |n|
       name = "Example User #{n+1}"
       email = "example-#{n+1}@user.de"
       password = "password"
       puts "#{name}, #{email}, #{password}"
 
-      user = User.create!(:name => name,
+      user = User.create!(:username => name,
                    :email => email,
                    :password => password,
                    :password_confirmation => password)
+      user.activate!
 
       50.times do |time|
         taglist = "Tanzen"
         taglist = "Boxen" if time.even?
 
-        puts "#{user.name} has a #{time} new messages"
+        puts "#{user.username} has #{time} new messages"
 
         user.messages.create!(:content => Faker::Lorem.sentence(5), :tag_list => taglist)
-
-        puts "created"
       end
 
       5.times do |time|
@@ -46,7 +46,7 @@ namespace :db do
         end_at = start_at + (0..12).to_a.sample.hours
 
         user.events.create!(:tag_list => taglist, :name => Faker::Lorem.sentence(1), :start_at => start_at, :end_at => end_at)
-        puts "#{user.name} has a #{time} new events"
+        puts "#{user.username} has #{time} new events"
       end
     end
   end

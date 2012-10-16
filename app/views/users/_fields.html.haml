@@ -1,9 +1,9 @@
 = simple_form_for(@user, :html => { :class => 'form-horizontal' }) do |f|
 
-  = f.input :name, :wrapper => :prepend, :label => false do
+  = f.input :username, :wrapper => :prepend, :label => false do
     %span.add-on
       <i class="icon-user"></i>
-    = f.input_field :name, :placeholder => "Name"
+    = f.input_field :username, :placeholder => "Name"
 
     
   = f.input :email, :wrapper => :prepend, :label => false do
