@@ -1,5 +1,11 @@
 Clorg::Application.routes.draw do
 
+  get "password_resets/create"
+
+  get "password_resets/edit"
+
+  get "password_resets/update"
+
   resources :events
   resources :tags
 
@@ -14,13 +20,19 @@ Clorg::Application.routes.draw do
   match '/messages', :to => 'messages#index'
   match '/messages/tag/:tag', :to => 'messages#index', :as => :messages_tagged_by
 
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
+
+  resources :password_resets
   resources :sessions, :only => [:new, :create, :destroy]
 
 
   match '/signup', :to => 'users#new'
-  match '/signin', :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
+  match '/login', :to => 'sessions#new'
+  match '/logout', :to => 'sessions#destroy'
 
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'

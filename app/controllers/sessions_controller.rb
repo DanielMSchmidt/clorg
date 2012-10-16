@@ -1,24 +1,25 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_login, :except => [:destroy]
   def new
     @title = "Sign in"
   end
 
   def create
-    user = User.authenticate(params[:session][:email], params[:session][:password])
+    logger.debug "session create called"
+    logger.debug params[:email]
+    logger.debug params[:password]
+    logger.debug params[:remember]
 
-    if user.nil?
-      flash.now[:error] = "Invalid email/password combination."
-      @title = "Sign in"
-      render 'new'
+    if @user = login(params[:session][:email],params[:session][:password], params[:session][:remember])
+      redirect_back_or_to(:messages, :notice => 'Login successful.')
     else
-      #sign the user in and redirect to the user's show page(per default or the original page he wanted)
-      sign_in user
-      redirect_back_or user
+      flash.now[:alert] = "Login failed."
+      render :action => "new" 
     end
   end
 
   def destroy
-    sign_out
+    logout
     redirect_to root_url, :notice => "Ausgeloggt!"
   end
 end

@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :get_message, :only => [:show, :edit, :destroy, :update]
   before_filter :new_message, :only => [:index, :new]
-  before_filter :check_auth
 
   def index
     @tags = Tag.all
@@ -57,9 +56,5 @@ class MessagesController < ApplicationController
 
   def get_message
     @message = Message.find(params[:id])
-  end
-
-  def check_auth
-    deny_access unless signed_in?
   end
 end

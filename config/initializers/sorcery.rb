@@ -118,7 +118,7 @@ Rails.application.config.sorcery.configure do |config|
     # specify username attributes, for example: [:username, :email].
     # Default: `[:username]`
     #
-    # user.username_attribute_names =
+    user.username_attribute_names = :email
 
 
     # change *virtual* password attribute, the one which is used until an encrypted one is generated.
@@ -216,7 +216,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    user.user_activation_mailer = user_activation_mailer
+    user.user_activation_mailer = UserActivationMailer
 
     # when true sorcery will not automatically
     # email activation details and allow you to
@@ -266,7 +266,7 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = UserMailer
 
 
     # reset password email method on your mailer class.
