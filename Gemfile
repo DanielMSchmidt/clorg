@@ -9,7 +9,7 @@ gem 'acts-as-taggable-on'
 gem 'sorcery'
 
 group :production, :staging do
-  gem 'mysql2'
+  gem 'pg'
   gem 'therubyracer'
 end
 
