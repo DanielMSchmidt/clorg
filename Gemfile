@@ -3,41 +3,40 @@ source 'http://rubygems.org'
 gem 'rails'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
+gem 'thin' #more solid webserver
+gem 'foreman'
 gem 'haml'
 gem 'simple_form'
 gem 'acts-as-taggable-on'
 gem 'sorcery'
+gem 'faker'
 
-group :production, :staging do
-  gem 'pg'
-  gem 'therubyracer'
+group :production do
+gem 'pg'
+gem 'therubyracer'
 end
 
-group :test, :development do
+group :development, :test do
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'annotate',
+      :git => 'git://github.com/jeremyolliver/annotate_models.git',
+      :branch => 'rake_compatibility'
+  gem 'bullet'
+  gem 'brakeman'
   gem "yard"
   gem "redcarpet"   # for yard to process .md files
   gem "rails_best_practices"
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem "ci_reporter", :require => false
-end
-
-group :development do
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'annotate',
-      :git => 'git://github.com/jeremyolliver/annotate_models.git',
-      :branch => 'rake_compatibility'
-  gem 'faker'
-  gem 'bullet'
-  gem 'brakeman'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'rspec'
   gem 'webrat'
   gem 'spork'
-  gem 'factory_girl_rails'
 end
 
 
