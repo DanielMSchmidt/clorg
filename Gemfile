@@ -9,13 +9,11 @@ gem 'haml'
 gem 'simple_form'
 gem 'acts-as-taggable-on'
 gem 'sorcery'
+gem 'faker'
+
 group :production do
 gem 'pg'
 gem 'therubyracer'
-end
-
-group :test, :development do
-
 end
 
 group :development, :test do
@@ -24,7 +22,6 @@ group :development, :test do
   gem 'annotate',
       :git => 'git://github.com/jeremyolliver/annotate_models.git',
       :branch => 'rake_compatibility'
-  gem 'faker'
   gem 'bullet'
   gem 'brakeman'
   gem "yard"
@@ -33,8 +30,6 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false
   gem "ci_reporter", :require => false
-
-
   gem 'factory_girl_rails'
 end
 
