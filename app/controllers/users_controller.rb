@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
-  before_filter :correct_user, :only => [:edit, :update]
+  skip_before_filter :require_login, :only => [:index, :new, :create, :activate]
   before_filter :admin_user, :only => :destroy
 
   def index
@@ -21,12 +20,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      sign_in @user
+      flash[:success] = "Thanks for joining. Please activate your account now!"
 
-      #flash doesn't work yet
-      flash[:success] = "Welcome to the Sample App!"
-
-      redirect_to @user
+      redirect_to root_path
     else
       @title = "Sign up"
       render 'new'
@@ -35,6 +31,7 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Edit user"
+    @user = User.find(params[:id])
   end
 
   def update
@@ -51,14 +48,27 @@ class UsersController < ApplicationController
 
     toBeDeleted = User.find(params[:id])
 
-    if toBeDeleted == current_user
-      flash[:notice] = "Don't delete yourself as admin"
+    if toBeDeleted == current_user 
+      if current_user.admin?
+        flash[:notice] = "Don't delete yourself as admin."
+      else
+        flash[:success] = "You destroyed yourself."
+        toBeDeleted.destroy  
+        redirect_to root_path
+      end
     else
-      toBeDeleted.destroy
-      flash[:success] = "User destroyed."
+      flash[:notice] = "You shouldn't delete others."
     end
-
     redirect_to(users_path)
+  end
+
+  def activate
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      redirect_to(login_path, :notice => 'User was successfully activated.')
+    else
+      not_authenticated
+    end
   end
 
   private

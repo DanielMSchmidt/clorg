@@ -1,0 +1,33 @@
+/ NAVIGATION RIGHT
+.span2.sidebar-nav
+  %ul.nav.nav-list.nav-pills.nav-stacked
+    %li.nav-header Navigation
+    <li
+    - if controller.controller_name == "pages"
+      class="active"
+    >
+    %a{:href => root_path}
+      %i.icon-home
+      Home
+    <li
+    - if controller.controller_name == "messages"
+      class="active"
+    >
+    %a{:href => messages_path}
+      %i.icon-envelope
+      Messages
+    <li
+    - if controller.controller_name == "calendar"
+      class="active"
+    >
+    %a{:href => calendar_path}
+      %i.icon-book
+      Calendar
+    <li
+    - if controller.controller_name == "users" && controller.action_name == "edit"
+      class="active"
+    >
+    %a{:href => edit_user_path(current_user)}
+      %i.icon-cog
+      Settings
+/ END NAVIGATION

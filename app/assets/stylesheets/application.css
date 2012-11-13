@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
 */
+
+a.btn{
+	color: #ffffff !important;
+}
+a.btn:hover{
+	text-decoration: none !important;
+}
+.btn a{
+	color: #ffffff !important;
+}
+.btn a:hover{
+	text-decoration: none !important;
+}

@@ -1,0 +1,12 @@
+.comment-metainfo.row-fluid
+  .user.span9
+    User_ID:
+    = comment.user_id # should be .user soon...
+  .controll.span3
+    .btn-group.pull-right
+      - if can_delete?(comment)
+        = link_to 'Edit', edit_message_comment_path(message, comment), :class => "btn btn-mini btn-primary"
+        = link_to 'Destroy', [message, comment], :method => :delete, :confirm => "Are you sure?", :class => "btn btn-mini btn-primary"
+.content
+  %p
+    = comment.content

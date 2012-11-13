@@ -1,0 +1,25 @@
+%h1 Monthly Calendar
+.tagbar
+  = render 'layouts/tagbar'
+.navigation
+  .prev
+    =month_link(@shown_month - 1.month, @activeTag)
+  .switch
+    %a{:href => week_calendar_path} Weekly Calendar
+  .next
+    =month_link(@shown_month + 1.month, @activeTag)
+#monthcalendar.calendar
+  .daynames
+    -(1..6).each do |day|
+      .dayname{id: "dayname-#{day-1}"}
+        =Date::DAYNAMES[day]
+    .dayname{id: "dayname-6"}
+      =Date::DAYNAMES[0]
+  -(@start .. @ending).each do |day|
+    .day{:id => "day-#{day.day}", :class => "month-#{day.month} #{'active' if (day.month == @shown_month.month)}", :ondblclick => "#{new_event(day)}"}
+      .caption
+        =day.day
+      .events
+        - whole_day = get_whole_day(day)
+        - @events.each do |event|
+          =render event, :day => whole_day if is_at_day(whole_day, event)

@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @event.name
+%p
+  %b Start at:
+  = @event.start_at
+%p
+  %b End at:
+  = @event.end_at
+%p
+  %b User:
+  = render "users/user_portrait", user: @event.user
+= link_to 'Edit', edit_event_path(@event)
+|
+\#{link_to 'Back', events_path}

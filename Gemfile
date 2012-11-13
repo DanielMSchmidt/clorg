@@ -1,32 +1,47 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
 gem 'thin' #more solid webserver
 gem 'foreman'
-gem "pg" #Postgres DB to deploy into heroku
-group :production, :staging do
-  
+gem 'haml'
+gem 'simple_form'
+gem 'acts-as-taggable-on'
+gem 'sorcery'
+group :production do
+gem 'pg'
+gem 'therubyracer'
+end
+
+group :test, :development do
 
 end
 
-group :development do
+group :development, :test do
   gem 'sqlite3'
-  gem 'sqlite3-ruby', '>= 1.3.1', :require => 'sqlite3'
   gem 'rspec-rails'
   gem 'annotate',
       :git => 'git://github.com/jeremyolliver/annotate_models.git',
       :branch => 'rake_compatibility'
   gem 'faker'
   gem 'bullet'
+  gem 'brakeman'
+  gem "yard"
+  gem "redcarpet"   # for yard to process .md files
+  gem "rails_best_practices"
+  gem 'simplecov', :require => false
+  gem 'simplecov-rcov', :require => false
+  gem "ci_reporter", :require => false
+
+
+  gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'rspec', '2.0.1'
-  gem 'webrat', '0.7.1'
-  gem 'spork', '0.8.4'
-  gem 'factory_girl_rails'
+  gem 'rspec'
+  gem 'webrat'
+  gem 'spork'
 end
 
 
@@ -44,10 +59,10 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

@@ -1,0 +1,28 @@
+//FIXME: Use Helper
+-if @activeTag.nil?
+  =hidden_field_tag 'activeTag', 'All'
+-else
+  =hidden_field_tag 'activeTag', @activeTag
+
+- unless @tags.nil?
+  .btn-group.radio
+    - if controller.controller_name == "messages"
+      #All.tag.btn.btn-primary
+        = link_to "All", messages_path
+      - @tags.each do |t|
+        .btn{:id => "#{t.name}", class: "btn-primary"}
+          = link_to t.name, messages_tagged_by_path(t.name)
+
+    - if controller.controller_name == "calendar" && controller.action_name == "index"
+      #All.tag.btn.btn-primary
+        = link_to "All", calendar_path
+      - @tags.each do |t|
+        .btn{:id => "#{t.name}", class: "btn-primary"}
+          = link_to t.name, calendar_path(:tag => t.name)
+
+    - if controller.controller_name == "calendar" && controller.action_name == "show"
+      #All.tag.btn.btn-primary
+        = link_to "All", week_calendar_path
+      - @tags.each do |t|
+        .btn{:id => "#{t.name}", class: "btn-primary"}
+          = link_to t.name, week_calendar_path(:tag => t.name)

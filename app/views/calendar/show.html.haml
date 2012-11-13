@@ -1,0 +1,19 @@
+%h1 Weekly Calendar
+.tagbar
+  = render 'layouts/tagbar'
+.navigation
+  .prev
+    =previous_week(Date.commercial(@year,@weeknr, 1), @activeTag)
+  .switch
+    %a{:href => calendar_path} Monthly Calendar
+  .next
+    =next_week(Date.commercial(@year,@weeknr, 1), @activeTag)
+#weekcalendar.calendar
+  =render 'week_calendar_hours'
+  -(1..7).each do |day| 
+    .day{:id => "day-#{day}", :ondblclick => "#{new_event(Date.commercial(@year,@weeknr, day))}"}
+      .weekday
+        =Time.at(((24*(3+day))-1)*60*60).strftime("%A")
+      - whole_day = get_whole_day(Date.commercial(@year,@weeknr, day))
+      - @events.each do |event|
+        =render event, :day => whole_day if is_at_day(whole_day, event)

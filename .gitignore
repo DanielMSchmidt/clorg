@@ -13,3 +13,8 @@
 /*.log
 
 *.rb~
+bin/
+Vagrantfile
+.vagrant
+config/database.yml
+package.box

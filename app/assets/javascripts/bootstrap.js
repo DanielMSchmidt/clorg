@@ -30,7 +30,7 @@
 
       }())
 
-      return transitionEnd &amp;&amp; {
+      return transitionEnd && {
         end: transitionEnd
       }
 
@@ -78,12 +78,12 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector &amp;&amp; selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
     $parent = $(selector)
 
-    e &amp;&amp; e.preventDefault()
+    e && e.preventDefault()
 
     $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
 
@@ -99,7 +99,7 @@
         .remove()
     }
 
-    $.support.transition &amp;&amp; $parent.hasClass('fade') ?
+    $.support.transition && $parent.hasClass('fade') ?
       $parent.on($.support.transition.end, removeElement) :
       removeElement()
   }
@@ -182,7 +182,7 @@
   Button.prototype.toggle = function () {
     var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
 
-    $parent &amp;&amp; $parent
+    $parent && $parent
       .find('.active')
       .removeClass('active')
 
@@ -197,7 +197,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('button')
-        , options = typeof option == 'object' &amp;&amp; option
+        , options = typeof option == 'object' && option
       if (!data) $this.data('button', (data = new Button(this, options)))
       if (option == 'toggle') data.toggle()
       else if (option) data.setState(option)
@@ -253,8 +253,8 @@
   var Carousel = function (element, options) {
     this.$element = $(element)
     this.options = options
-    this.options.slide &amp;&amp; this.slide(this.options.slide)
-    this.options.pause == 'hover' &amp;&amp; this.$element
+    this.options.slide && this.slide(this.options.slide)
+    this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
   }
@@ -264,8 +264,8 @@
     cycle: function (e) {
       if (!e) this.paused = false
       this.options.interval
-        &amp;&amp; !this.paused
-        &amp;&amp; (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+        && !this.paused
+        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
       return this
     }
 
@@ -275,7 +275,7 @@
         , activePos = children.index($active)
         , that = this
 
-      if (pos &gt; (children.length - 1) || pos &lt; 0) return
+      if (pos > (children.length - 1) || pos < 0) return
 
       if (this.sliding) {
         return this.$element.one('slid', function () {
@@ -287,7 +287,7 @@
         return this.pause().cycle()
       }
 
-      return this.slide(pos &gt; activePos ? 'next' : 'prev', $(children[pos]))
+      return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
     }
 
   , pause: function (e) {
@@ -318,13 +318,13 @@
 
       this.sliding = true
 
-      isCycling &amp;&amp; this.pause()
+      isCycling && this.pause()
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
       if ($next.hasClass('active')) return
 
-      if ($.support.transition &amp;&amp; this.$element.hasClass('slide')) {
+      if ($.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
         $next.addClass(type)
@@ -346,7 +346,7 @@
         this.$element.trigger('slid')
       }
 
-      isCycling &amp;&amp; this.cycle()
+      isCycling && this.cycle()
 
       return this
     }
@@ -361,7 +361,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('carousel')
-        , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' &amp;&amp; option)
+        , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
       if (!data) $this.data('carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (typeof option == 'string' || (option = options.slide)) data[option]()
@@ -383,8 +383,8 @@
   $(function () {
     $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
       var $this = $(this), href
-        , $target = $($this.attr('data-target') || (href = $this.attr('href')) &amp;&amp; href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-        , options = !$target.data('modal') &amp;&amp; $.extend({}, $target.data(), $this.data())
+        , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+        , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
       $target.carousel(options)
       e.preventDefault()
     })
@@ -426,7 +426,7 @@
       this.$parent = $(this.options.parent)
     }
 
-    this.options.toggle &amp;&amp; this.toggle()
+    this.options.toggle && this.toggle()
   }
 
   Collapse.prototype = {
@@ -448,11 +448,11 @@
 
       dimension = this.dimension()
       scroll = $.camelCase(['scroll', dimension].join('-'))
-      actives = this.$parent &amp;&amp; this.$parent.find('&gt; .accordion-group &gt; .in')
+      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
 
-      if (actives &amp;&amp; actives.length) {
+      if (actives && actives.length) {
         hasData = actives.data('collapse')
-        if (hasData &amp;&amp; hasData.transitioning) return
+        if (hasData && hasData.transitioning) return
         actives.collapse('hide')
         hasData || actives.data('collapse', null)
       }
@@ -500,7 +500,7 @@
 
       this.$element[method]('in')
 
-      $.support.transition &amp;&amp; this.$element.hasClass('collapse') ?
+      $.support.transition && this.$element.hasClass('collapse') ?
         this.$element.one($.support.transition.end, complete) :
         complete()
     }
@@ -519,7 +519,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('collapse')
-        , options = typeof option == 'object' &amp;&amp; option
+        , options = typeof option == 'object' && option
       if (!data) $this.data('collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -540,7 +540,7 @@
       var $this = $(this), href
         , target = $this.attr('data-target')
           || e.preventDefault()
-          || (href = $this.attr('href')) &amp;&amp; href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
       $(target).collapse(option)
     })
@@ -598,7 +598,7 @@
 
       if (!selector) {
         selector = $this.attr('href')
-        selector = selector &amp;&amp; selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
       $parent = $(selector)
@@ -701,7 +701,7 @@
 
         escape.call(this)
         backdrop.call(this, function () {
-          var transition = $.support.transition &amp;&amp; that.$element.hasClass('fade')
+          var transition = $.support.transition && that.$element.hasClass('fade')
 
           if (!that.$element.parent().length) {
             that.$element.appendTo(document.body) //don't move modals dom position
@@ -724,7 +724,7 @@
       }
 
     , hide: function (e) {
-        e &amp;&amp; e.preventDefault()
+        e && e.preventDefault()
 
         var that = this
 
@@ -742,7 +742,7 @@
 
         this.$element.removeClass('in')
 
-        $.support.transition &amp;&amp; this.$element.hasClass('fade') ?
+        $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
           hideModal.call(this)
       }
@@ -778,10 +778,10 @@
     var that = this
       , animate = this.$element.hasClass('fade') ? 'fade' : ''
 
-    if (this.isShown &amp;&amp; this.options.backdrop) {
-      var doAnimate = $.support.transition &amp;&amp; animate
+    if (this.isShown && this.options.backdrop) {
+      var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('&lt;div class="modal-backdrop ' + animate + '" /&gt;')
+      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
       if (this.options.backdrop != 'static') {
@@ -796,10 +796,10 @@
         this.$backdrop.one($.support.transition.end, callback) :
         callback()
 
-    } else if (!this.isShown &amp;&amp; this.$backdrop) {
+    } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
-      $.support.transition &amp;&amp; this.$element.hasClass('fade')?
+      $.support.transition && this.$element.hasClass('fade')?
         this.$backdrop.one($.support.transition.end, $.proxy(removeBackdrop, this)) :
         removeBackdrop.call(this)
 
@@ -815,9 +815,9 @@
 
   function escape() {
     var that = this
-    if (this.isShown &amp;&amp; this.options.keyboard) {
+    if (this.isShown && this.options.keyboard) {
       $(document).on('keyup.dismiss.modal', function ( e ) {
-        e.which == 27 &amp;&amp; that.hide()
+        e.which == 27 && that.hide()
       })
     } else if (!this.isShown) {
       $(document).off('keyup.dismiss.modal')
@@ -832,7 +832,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('modal')
-        , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' &amp;&amp; option)
+        , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
@@ -854,7 +854,7 @@
   $(function () {
     $('body').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
       var $this = $(this), href
-        , $target = $($this.attr('data-target') || (href = $this.attr('href')) &amp;&amp; href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+        , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
         , option = $target.data('modal') ? 'toggle' : $.extend({}, $target.data(), $this.data())
 
       e.preventDefault()
@@ -923,7 +923,7 @@
   , getOptions: function (options) {
       options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
 
-      if (options.delay &amp;&amp; typeof options.delay == 'number') {
+      if (options.delay && typeof options.delay == 'number') {
         options.delay = {
           show: options.delay
         , hide: options.delay
@@ -966,7 +966,7 @@
         , placement
         , tp
 
-      if (this.hasContent() &amp;&amp; this.enabled) {
+      if (this.hasContent() && this.enabled) {
         $tip = this.tip()
         this.setContent()
 
@@ -1015,10 +1015,10 @@
   , isHTML: function(text) {
       // html string detection logic adapted from jQuery
       return typeof text != 'string'
-        || ( text.charAt(0) === "&lt;"
-          &amp;&amp; text.charAt( text.length - 1 ) === "&gt;"
-          &amp;&amp; text.length &gt;= 3
-        ) || /^(?:[^&lt;]*&lt;[\w\W]+&gt;[^&gt;]*$)/.exec(text)
+        || ( text.charAt(0) === "<"
+          && text.charAt( text.length - 1 ) === ">"
+          && text.length >= 3
+        ) || /^(?:[^<]*<[\w\W]+>[^>]*$)/.exec(text)
     }
 
   , setContent: function () {
@@ -1046,7 +1046,7 @@
         })
       }
 
-      $.support.transition &amp;&amp; this.$tip.hasClass('fade') ?
+      $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.remove()
     }
@@ -1118,7 +1118,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('tooltip')
-        , options = typeof option == 'object' &amp;&amp; option
+        , options = typeof option == 'object' && option
       if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -1130,7 +1130,7 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '&lt;div class="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'
+  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
   , title: ''
   , delay: 0
@@ -1182,7 +1182,7 @@
         , content = this.getContent()
 
       $tip.find('.popover-title')[this.isHTML(title) ? 'html' : 'text'](title)
-      $tip.find('.popover-content &gt; *')[this.isHTML(content) ? 'html' : 'text'](content)
+      $tip.find('.popover-content > *')[this.isHTML(content) ? 'html' : 'text'](content)
 
       $tip.removeClass('fade top bottom left right in')
     }
@@ -1219,7 +1219,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('popover')
-        , options = typeof option == 'object' &amp;&amp; option
+        , options = typeof option == 'object' && option
       if (!data) $this.data('popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -1230,7 +1230,7 @@
   $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
     placement: 'right'
   , content: ''
-  , template: '&lt;div class="popover"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;div class="popover-inner"&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;'
+  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
 }(window.jQuery);/* =============================================================
@@ -1268,8 +1268,8 @@
     this.options = $.extend({}, $.fn.scrollspy.defaults, options)
     this.$scrollElement = $element.on('scroll.scroll.data-api', process)
     this.selector = (this.options.target
-      || ((href = $(element).attr('href')) &amp;&amp; href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-      || '') + ' .nav li &gt; a'
+      || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
+      || '') + ' .nav li > a'
     this.$body = $('body')
     this.refresh()
     this.process()
@@ -1291,10 +1291,10 @@
           .map(function () {
             var $el = $(this)
               , href = $el.data('target') || $el.attr('href')
-              , $href = /^#\w/.test(href) &amp;&amp; $(href)
+              , $href = /^#\w/.test(href) && $(href)
             return ( $href
-              &amp;&amp; href.length
-              &amp;&amp; [[ $href.position().top, href ]] ) || null
+              && href.length
+              && [[ $href.position().top, href ]] ) || null
           })
           .sort(function (a, b) { return a[0] - b[0] })
           .each(function () {
@@ -1312,16 +1312,16 @@
           , activeTarget = this.activeTarget
           , i
 
-        if (scrollTop &gt;= maxScroll) {
+        if (scrollTop >= maxScroll) {
           return activeTarget != (i = targets.last()[0])
-            &amp;&amp; this.activate ( i )
+            && this.activate ( i )
         }
 
         for (i = offsets.length; i--;) {
           activeTarget != targets[i]
-            &amp;&amp; scrollTop &gt;= offsets[i]
-            &amp;&amp; (!offsets[i + 1] || scrollTop &lt;= offsets[i + 1])
-            &amp;&amp; this.activate( targets[i] )
+            && scrollTop >= offsets[i]
+            && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+            && this.activate( targets[i] )
         }
       }
 
@@ -1360,7 +1360,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('scrollspy')
-        , options = typeof option == 'object' &amp;&amp; option
+        , options = typeof option == 'object' && option
       if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -1429,7 +1429,7 @@
 
       if (!selector) {
         selector = $this.attr('href')
-        selector = selector &amp;&amp; selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
       if ( $this.parent('li').hasClass('active') ) return
@@ -1456,15 +1456,15 @@
     }
 
   , activate: function ( element, container, callback) {
-      var $active = container.find('&gt; .active')
+      var $active = container.find('> .active')
         , transition = callback
-            &amp;&amp; $.support.transition
-            &amp;&amp; $active.hasClass('fade')
+            && $.support.transition
+            && $active.hasClass('fade')
 
       function next() {
         $active
           .removeClass('active')
-          .find('&gt; .dropdown-menu &gt; .active')
+          .find('> .dropdown-menu > .active')
           .removeClass('active')
 
         element.addClass('active')
@@ -1480,7 +1480,7 @@
           element.closest('li.dropdown').addClass('active')
         }
 
-        callback &amp;&amp; callback()
+        callback && callback()
       }
 
       transition ?
@@ -1641,7 +1641,7 @@
   , highlighter: function (item) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&amp;')
       return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
-        return '&lt;strong&gt;' + match + '&lt;/strong&gt;'
+        return '<strong>' + match + '</strong>'
       })
     }
 
@@ -1773,7 +1773,7 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('typeahead')
-        , options = typeof option == 'object' &amp;&amp; option
+        , options = typeof option == 'object' && option
       if (!data) $this.data('typeahead', (data = new Typeahead(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -1782,8 +1782,8 @@
   $.fn.typeahead.defaults = {
     source: []
   , items: 8
-  , menu: '&lt;ul class="typeahead dropdown-menu"&gt;&lt;/ul&gt;'
-  , item: '&lt;li&gt;&lt;a href="#"&gt;&lt;/a&gt;&lt;/li&gt;'
+  , menu: '<ul class="typeahead dropdown-menu"></ul>'
+  , item: '<li><a href="#"></a></li>'
   }
 
   $.fn.typeahead.Constructor = Typeahead
@@ -1801,4 +1801,4 @@
     })
   })
 
-}(window.jQuery);</pre></body></html>
+}(window.jQuery);

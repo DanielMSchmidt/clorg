@@ -1,0 +1,2 @@
+.event{:onclick => "window.location = '#{event_path(event)}'", :class => "start-#{(event.start_at.hour - 6) * 2 + (event.start_at.min/ 60).round} duration-#{event.end_at.hour - event.start_at.hour}"}
+	= "#{event.name} by #{event.user.name}"

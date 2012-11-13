@@ -1,0 +1,36 @@
+Getting started with development:
+  - install Ruby On Rails
+  - clone the repsitory
+  - install git flow
+  - use the command git flow init
+  - press enter all the time
+  - git pull
+  - rails generate rspec:install
+
+Getting started with Ubuntu:
+  How to install ruby on rails on ubuntu
+
+   ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
+   ~$ sudo gem install rails
+
+
+How to start:
+  - Add to this File at "Features in Development" your feature
+  - Use git flow feature start YOUR_FEATURE to start a new feature (should not be a longer one then one week)
+  - develop your feature
+  - Use git flow feature finish YOUR_FEATURE
+
+Getting started with Ubuntu:
+
+How to install ruby on rails on ubuntu
+  ~$ sudo apt-get -y install ruby1.9.1 ruby1.9.1-dev libxml2 libxml2-dev libxslt1-dbg libxslt1-dev sqlite3 libsqlite3-dev nodejs
+  ~$ sudo gem install rails
+
+for Git:
+  ~$ sudo apt-get install -y git-core git-gui git-doc
+How to configure git:
+  http://help.github.com/linux-set-up-git/
+
+Git-flow could be downloaded on Launchpad:
+  https://launchpad.net/ubuntu/+archive/primary/+files/git-flow_0.4.1-2_all.deb
+

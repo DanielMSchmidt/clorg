@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title
+      Clorg | #{@title || "The Club Organizer"}
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %section.round
+      / flash alert
+      .container-fluid
+        = render 'layouts/navigation_top' 
+        .row-fluid
+          / CONTENT
+          .span10.well
+            = yield
+          / END CONTENT
+          - if logged_in?
+            = render 'layouts/navigation_right'
+        / 
+        / FOOTER
+        .row-fluid.navbar-fixed-bottom
+          .pull-right{:style => "padding-right:20px;"}
+            = link_to "About", about_path
+            = link_to "Contact", contact_path
+            \&copy Clorg 2012
+        / END FOOTER

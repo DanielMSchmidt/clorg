@@ -1,0 +1,32 @@
+%h2 Sign in
+= render 'shared/flash_alert'
+.row-fluid
+  .span6
+    = simple_form_for(:session, :url => sessions_path , :html => { :class => 'form-horizontal' }) do |f|
+      / LOGIN EMAIL
+      = f.input :email, :wrapper => :prepend, :label => false do
+        %span.add-on
+          <i class="icon-envelope"></i>
+        = f.input_field :email, :placeholder => "E-Mail"
+      / LOGIN PASSWORD
+      = f.input :password, :wrapper => :prepend, :label => false do
+        %span.add-on
+          <i class="icon-lock"></i>
+        = f.password_field :password, :placeholder => "Password"
+      / REMEMBER ME
+      = f.input :password, :wrapper => :prepend, :label => false do
+        %span.add-on
+          <i class="icon-check"></i>
+        = f.check_box :remember
+        Remember me
+      / LOGIN BUTTON
+      = f.submit "Sign in", :class => "btn"
+
+  .span6
+    %h4
+      New user? #{link_to "Sign up now!", signup_path}
+    %br
+    %hr
+    %br
+    %h4 Forgot Password?
+    = render 'forgot_password_form'
