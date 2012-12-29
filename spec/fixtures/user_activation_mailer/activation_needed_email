@@ -1,3 +1,0 @@
-UserActivationMailer#activation_needed_email
-
-Hi, find me in app/views/user_activation_mailer/activation_needed_email

@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails'
 gem 'gravatar_image_tag'
 gem 'will_paginate', '~> 3.0'
-gem 'thin' #more solid webserver
+#gem 'thin' #more solid webserver
 gem 'foreman'
 gem 'haml'
 gem 'simple_form'
@@ -12,8 +12,8 @@ gem 'sorcery'
 gem 'faker'
 
 group :production do
-gem 'pg'
-gem 'therubyracer'
+  gem 'mysql2'
+  gem 'therubyracer'
 end
 
 group :development, :test do
